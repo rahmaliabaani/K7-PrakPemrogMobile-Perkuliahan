@@ -2,6 +2,7 @@ package com.example.k7_prakpemrogmobile_perkuliahan.di
 
 import android.content.Context
 import com.example.k7_prakpemrogmobile_perkuliahan.networks.DosenApi
+import com.example.k7_prakpemrogmobile_perkuliahan.networks.MatkulApi
 import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -34,7 +35,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(
-                "https://ppm-api.gusdya.net/api/dosen"
+                "https://ppm-api.gusdya.net/"
             )
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory())
@@ -45,5 +46,11 @@ object NetworkModule {
     @Singleton
     fun provideDosenApi(retrofit: Retrofit): DosenApi {
         return retrofit.create(DosenApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMatkulApi(retrofit: Retrofit): MatkulApi {
+        return retrofit.create(MatkulApi::class.java)
     }
 }
