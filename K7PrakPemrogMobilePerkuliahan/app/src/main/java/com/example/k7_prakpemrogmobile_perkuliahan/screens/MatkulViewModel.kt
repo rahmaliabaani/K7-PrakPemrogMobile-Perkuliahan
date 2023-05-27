@@ -80,4 +80,17 @@ class MatkulViewModel @Inject constructor(private val matkulRepository: MatkulRe
         )
     }
 
+    suspend fun delete(id: String) {
+        _isLoading.postValue(true)
+        matkulRepository.delete(id, onError = { message ->
+            _toast.postValue(message)
+            _isLoading.postValue(false)
+            _success.postValue(true)
+        }, onSuccess = {
+            _toast.postValue("Data berhasil dihapus")
+            _isLoading.postValue(false)
+            _success.postValue(true)
+        })
+    }
+
 }

@@ -19,5 +19,5 @@ interface MatkulDao {
     @Delete
     fun delete(item: Matkul)
     @Query("DELETE FROM Matkul WHERE id = :id")
-    fun delete(id: String)
+    suspend fun delete(id: String)
 }

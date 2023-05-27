@@ -40,38 +40,11 @@ fun MatkulScreen(navController : NavHostController, modifier: Modifier = Modifie
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(items = items, itemContent = { item ->
-                Row(modifier = Modifier
-                    .padding(15.dp)
-                    .fillMaxWidth().clickable {
-                        navController.navigate("edit-matkul/${item.id}")
-                    }
-                ) {
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Kode", fontSize = 14.sp)
-                        Text(item.kode, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Nama", fontSize = 14.sp)
-                        Text(item.nama, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "SKS", fontSize = 14.sp)
-                        Text(text = "${item.sks}", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Praktikum", fontSize = 14.sp)
-                        Text(text = item.praktikum.toString(), fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Deskripsi", fontSize = 14.sp)
-                        Text(item.deskripsi, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                MatkulItem(item = item, navController = navController) {
+                    scope.launch {
+                        viewModel.delete(it)
                     }
                 }
-                Divider(modifier = Modifier.fillMaxWidth())
             })
         }
     }
