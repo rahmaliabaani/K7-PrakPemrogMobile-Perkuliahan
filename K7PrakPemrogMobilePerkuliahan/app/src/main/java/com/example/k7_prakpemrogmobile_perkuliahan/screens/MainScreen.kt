@@ -118,16 +118,57 @@ fun MainScreen() {
                     title.value = "Home"
                     HomeScreen()
                 }
-
+//route dosen
                 composable("dosen") {
                     title.value = "Dosen"
-
+                    DosenScreen(navController = navController,
+                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                        Modifier.padding(innerPadding))
                 }
-
+                composable("tambah-dosen") {
+                    title.value = "Tambah Dosen"
+                    FormDosenScreen(navController =
+                    navController, modifier = Modifier.padding(innerPadding))
+                }
+                composable("edit-dosen/{id}",
+                    listOf(
+                        navArgument("id") {
+                            type = NavType.StringType
+                        }
+                    )) { backStackEntry ->
+                    title.value = "Edit Dosen"
+                    val id =
+                        backStackEntry.arguments?.getString("id")
+                            ?: return@composable
+                    FormDosenScreen(navController = navController, id = id, modifier =
+                    Modifier.padding(innerPadding))
+                }
+//route mahasiswa
                 composable("mahasiswa") {
                     title.value = "Mahasiswa"
-
+                    MahasiswaScreen(navController = navController,
+                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                        Modifier.padding(innerPadding))
                 }
+                composable("tambah-mahasiswa") {
+                    title.value = "Tambah Mahasiswa"
+                    FormMahasiswaScreen(navController =
+                    navController, modifier = Modifier.padding(innerPadding))
+                }
+                composable("edit-mahasiswa/{id}",
+                    listOf(
+                        navArgument("id") {
+                            type = NavType.StringType
+                        }
+                    )) { backStackEntry ->
+                    title.value = "Edit Mahasiswa"
+                    val id =
+                        backStackEntry.arguments?.getString("id")
+                            ?: return@composable
+                    FormMahasiswaScreen(navController = navController, id = id, modifier =
+                    Modifier.padding(innerPadding))
+                }
+//                route matkul
                 composable("matkul") {
                     title.value = "Matakuliah"
                     MatkulScreen(navController = navController,

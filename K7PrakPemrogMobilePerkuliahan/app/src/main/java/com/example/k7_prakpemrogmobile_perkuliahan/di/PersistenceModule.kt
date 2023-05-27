@@ -3,6 +3,8 @@ package com.example.k7_prakpemrogmobile_perkuliahan.di
 import android.app.Application
 import androidx.room.Room
 import com.example.k7_prakpemrogmobile_perkuliahan.persistences.AppDatabase
+import com.example.k7_prakpemrogmobile_perkuliahan.persistences.DosenDao
+import com.example.k7_prakpemrogmobile_perkuliahan.persistences.MahasiswaDao
 import com.example.k7_prakpemrogmobile_perkuliahan.persistences.MatkulDao
 import dagger.Module
 import dagger.Provides
@@ -25,6 +27,20 @@ object PersistenceModule {
             .fallbackToDestructiveMigration()
             .build()
     }
+//    dosen
+    @Provides
+    @Singleton
+    fun provideDosenDao(appDatabase: AppDatabase): DosenDao {
+        return appDatabase.dosenDao()
+    }
+
+//    mahasiswa
+    @Provides
+    @Singleton
+    fun provideMahasiswaDao(appDatabase: AppDatabase): MahasiswaDao {
+        return appDatabase.mahasiswaDao()
+    }
+//    matkul
     @Provides
     @Singleton
     fun provideMatkulDao(appDatabase: AppDatabase): MatkulDao {

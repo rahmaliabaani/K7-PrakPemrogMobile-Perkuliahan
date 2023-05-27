@@ -8,12 +8,13 @@ data class Dosen (
     @PrimaryKey val id: String,
     val nidn: String,
     val nama: String,
-    val gelarDepan: String,
-    val gelarBelakang: String,
-    val pendidikan: Pendidikan
+    val gelar_depan: String,
+    val gelar_belakang: String,
+//    val pendidikan: Pendidikan
+    val pendidikan : String
 )
 
-enum class Pendidikan (val pendidikan: String) {
-    s2("S2"),
-    s3("S3")
-}
+//enum class Pendidikan (val pendidikan: String) {
+//    s2("S2"),
+//    s3("S3")
+//}

@@ -2,6 +2,7 @@ package com.example.k7_prakpemrogmobile_perkuliahan.di
 
 import android.content.Context
 import com.example.k7_prakpemrogmobile_perkuliahan.networks.DosenApi
+import com.example.k7_prakpemrogmobile_perkuliahan.networks.MahasiswaApi
 import com.example.k7_prakpemrogmobile_perkuliahan.networks.MatkulApi
 import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
 import dagger.Module
@@ -42,12 +43,18 @@ object NetworkModule {
             .build()
     }
 
+//    dosen
     @Provides
     @Singleton
     fun provideDosenApi(retrofit: Retrofit): DosenApi {
         return retrofit.create(DosenApi::class.java)
     }
-
+//    mahasiswa
+    @Provides
+    @Singleton
+    fun provideMahasiswaApi(retrofit: Retrofit): MahasiswaApi {
+        return retrofit.create(MahasiswaApi::class.java)
+    }
     @Provides
     @Singleton
     fun provideMatkulApi(retrofit: Retrofit): MatkulApi {
