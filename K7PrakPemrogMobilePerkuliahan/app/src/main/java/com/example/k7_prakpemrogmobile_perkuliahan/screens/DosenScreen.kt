@@ -40,28 +40,11 @@ fun DosenScreen(navController : NavHostController, modifier: Modifier = Modifier
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(items = items, itemContent = { item ->
-                Row(modifier = Modifier
-                    .padding(15.dp)
-                    .fillMaxWidth().clickable {
-                        navController.navigate("edit-dosen/${item.id}")
-                    }
-                ) {
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "NIDN", fontSize = 14.sp)
-                        Text(item.nidn, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Nama", fontSize = 14.sp)
-                        Text("${item.gelar_depan} ${item.nama} ${item.gelar_belakang}", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Pendidikan", fontSize = 14.sp)
-                        Text(text = item.pendidikan, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                DosenItem(item = item, navController = navController) {
+                    scope.launch {
+                        viewModel.delete(it)
                     }
                 }
-                Divider(modifier = Modifier.fillMaxWidth())
             })
         }
     }

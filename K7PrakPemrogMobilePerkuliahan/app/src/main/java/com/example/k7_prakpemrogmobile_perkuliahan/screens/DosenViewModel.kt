@@ -80,4 +80,17 @@ class DosenViewModel @Inject constructor(private val dosenRepository: DosenRepos
         )
     }
 
+    suspend fun delete(id: String) {
+        _isLoading.postValue(true)
+        dosenRepository.delete(id, onError = { message ->
+            _toast.postValue(message)
+            _isLoading.postValue(false)
+            _success.postValue(true)
+        }, onSuccess = {
+            _toast.postValue("Data berhasil dihapus")
+            _isLoading.postValue(false)
+            _success.postValue(true)
+        })
+    }
+
 }
