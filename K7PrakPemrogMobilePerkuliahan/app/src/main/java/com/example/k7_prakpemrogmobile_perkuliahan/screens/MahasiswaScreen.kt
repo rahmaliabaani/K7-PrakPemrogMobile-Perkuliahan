@@ -42,7 +42,7 @@ fun MahasiswaScreen(navController : NavHostController, modifier: Modifier = Modi
             items(items = items, itemContent = { item ->
                 MahasiswaItem(item = item, navController = navController ) {
                     scope.launch {
-                        viewModel.delete(it)
+                        viewModel.delete(it)    //Delete
                     }
                 }
             })
