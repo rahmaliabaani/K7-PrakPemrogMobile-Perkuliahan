@@ -1,5 +1,6 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,7 +24,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Purple700
 import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Teal200
+import com.vanpra.composematerialdialogs.MaterialDialog
+import com.vanpra.composematerialdialogs.datetime.date.datepicker
+import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import kotlinx.coroutines.launch
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, modifier: Modifier = Modifier) {
@@ -32,6 +37,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
     val nama = remember { mutableStateOf(TextFieldValue("")) }
     val tanggal_lahir = remember { mutableStateOf(TextFieldValue("")) }
     val jenis_kelamin = remember { mutableStateOf(TextFieldValue("")) }
+    val tanggalDialogState = rememberMaterialDialogState()
     val scope = rememberCoroutineScope()
     val isLoading = remember { mutableStateOf(false) }
     val buttonLabel = if (isLoading.value) "Mohon tunggu..." else "Simpan"
@@ -39,7 +45,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
         .padding(10.dp)
         .fillMaxWidth()) {
         OutlinedTextField(
-            label = { Text(text = "Kode") },
+            label = { Text(text = "NPM") },
             value = npm.value,
             onValueChange = {
                 npm.value = it
@@ -47,7 +53,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "IF231") }
+            placeholder = { Text(text = "NPM") },
         )
         OutlinedTextField(
             label = { Text(text = "Nama") },
@@ -70,10 +76,12 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             },
             modifier = Modifier
                 .padding(4.dp)
-                .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(keyboardType =
-            KeyboardType.Decimal),
-            placeholder = { Text(text = "2") }
+                .fillMaxWidth()
+                .clickable {
+                    tanggalDialogState.show()
+                },
+            placeholder = {Text(text = "yyyy-mm-dd")},
+            enabled = false
         )
 
         OutlinedTextField(
@@ -85,7 +93,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "IF231") }
+            placeholder = { Text(text = "L/P") }
         )
 
         val loginButtonColors = ButtonDefaults.buttonColors(
@@ -160,6 +168,15 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                     jenis_kelamin.value = TextFieldValue(mahasiswa.jenis_kelamin)
                 }
             }
+        }
+    }
+
+    MaterialDialog(dialogState = tanggalDialogState, buttons = {
+        positiveButton("OK")
+        negativeButton("Batal")
+    }) {
+        datepicker {date ->
+            tanggal_lahir.value = TextFieldValue(date.format(DateTimeFormatter.ISO_LOCAL_DATE))
         }
     }
 }

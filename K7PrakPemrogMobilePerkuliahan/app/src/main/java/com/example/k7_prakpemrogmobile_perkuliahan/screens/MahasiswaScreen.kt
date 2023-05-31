@@ -40,34 +40,11 @@ fun MahasiswaScreen(navController : NavHostController, modifier: Modifier = Modi
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(items = items, itemContent = { item ->
-                Row(modifier = Modifier
-                    .padding(15.dp)
-                    .fillMaxWidth().clickable {
-                        navController.navigate("edit-mahasiswa/${item.id}")
+                MahasiswaItem(item = item, navController = navController ) {
+                    scope.launch {
+                        viewModel.delete(it)
                     }
-                ) {
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "NPM", fontSize = 14.sp)
-                        Text(item.npm, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Nama", fontSize = 14.sp)
-                        Text(item.nama, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Tanggal Lahir", fontSize = 14.sp)
-                        Text(text = item.tanggal_lahir, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
-                    Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Jenis Kelamin", fontSize = 14.sp)
-                        Text(text = item.jenis_kelamin, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    }
-
                 }
-                Divider(modifier = Modifier.fillMaxWidth())
             })
         }
     }
