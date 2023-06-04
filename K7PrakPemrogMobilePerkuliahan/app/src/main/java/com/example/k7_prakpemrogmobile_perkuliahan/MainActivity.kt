@@ -8,9 +8,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.k7_prakpemrogmobile_perkuliahan.screens.MainScreen
+import com.example.k7_prakpemrogmobile_perkuliahan.screens.Navigation
 import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.FunctionalComposeTheme
 
 @AndroidEntryPoint
@@ -22,9 +24,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = Color(0xFF4C1558)
                 ) {
-                    MainScreen()
+                    Navigation()
                 }
             }
         }
@@ -35,6 +37,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     FunctionalComposeTheme {
-        MainScreen()
+        Navigation()
     }
 }
