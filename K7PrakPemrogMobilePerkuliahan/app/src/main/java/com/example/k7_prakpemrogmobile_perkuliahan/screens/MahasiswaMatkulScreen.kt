@@ -6,10 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,7 +33,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
     val npm = remember { mutableStateOf(TextFieldValue("")) }
     val nama = remember { mutableStateOf(TextFieldValue("")) }
     val tanggal_lahir = remember { mutableStateOf(TextFieldValue("")) }
-    val jenis_kelamin = remember { mutableStateOf(TextFieldValue("")) }
+    val jenis_kelamin = remember { mutableStateOf("") }
     val tanggalDialogState = rememberMaterialDialogState()
     val scope = rememberCoroutineScope()
     val isLoading = remember { mutableStateOf(false) }
@@ -55,6 +52,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 .fillMaxWidth(),
             placeholder = { Text(text = "NPM") },
         )
+
         OutlinedTextField(
             label = { Text(text = "Nama") },
             value = nama.value,
@@ -68,6 +66,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
             placeholder = { Text(text = "XXXXX") }
         )
+
         OutlinedTextField(
             label = { Text(text = "Tanggal Lahir") },
             value = tanggal_lahir.value,
@@ -84,17 +83,31 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             enabled = false
         )
 
-        OutlinedTextField(
-            label = { Text(text = "Jenis Kelamin") },
-            value = jenis_kelamin.value,
-            onValueChange = {
-                jenis_kelamin.value = it
-            },
-            modifier = Modifier
-                .padding(4.dp)
-                .fillMaxWidth(),
-            placeholder = { Text(text = "L/P") }
-        )
+//        OutlinedTextField(
+//            label = { Text(text = "Jenis Kelamin") },
+//            value = jenis_kelamin.value,
+//            onValueChange = {
+//                jenis_kelamin.value = it
+//            },
+//            modifier = Modifier
+//                .padding(4.dp)
+//                .fillMaxWidth(),
+//            placeholder = { Text(text = "L/P") }
+//        )
+        Row(modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()) {
+            RadioButton(selected = jenis_kelamin.value == "Laki-laki",
+                        onClick = { jenis_kelamin.value = "Laki-laki" },
+                        colors = RadioButtonDefaults.colors(Purple700),
+            )
+            Text(text = "Laki-laki", modifier = Modifier.padding(14.dp))
+            RadioButton(selected = jenis_kelamin.value == "Perempuan",
+                onClick = { jenis_kelamin.value = "Perempuan" },
+                colors = RadioButtonDefaults.colors(Purple700),
+            )
+            Text(text = "Perempuan", modifier = Modifier.padding(14.dp))
+        }
 
         val loginButtonColors = ButtonDefaults.buttonColors(
             backgroundColor = Purple700,
@@ -114,7 +127,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                             npm.value.text,
                             nama.value.text,
                             tanggal_lahir.value.text,
-                            jenis_kelamin.value.text
+                            jenis_kelamin.value
                         )
                     }
                 } else {
@@ -124,7 +137,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                             npm.value.text,
                             nama.value.text,
                             tanggal_lahir.value.text,
-                            jenis_kelamin.value.text
+                            jenis_kelamin.value
                         )
                     }
                 }
@@ -142,7 +155,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 npm.value = TextFieldValue("")
                 nama.value = TextFieldValue("")
                 tanggal_lahir.value = TextFieldValue("")
-                jenis_kelamin.value = TextFieldValue("")
+                jenis_kelamin.value = ""
             }, colors = resetButtonColors) {
                 Text(
                     text = "Reset",
@@ -165,7 +178,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                     npm.value = TextFieldValue(mahasiswa.npm)
                     nama.value = TextFieldValue(mahasiswa.nama)
                     tanggal_lahir.value = TextFieldValue(mahasiswa.tanggal_lahir)
-                    jenis_kelamin.value = TextFieldValue(mahasiswa.jenis_kelamin)
+                    jenis_kelamin.value = ""
                 }
             }
         }
