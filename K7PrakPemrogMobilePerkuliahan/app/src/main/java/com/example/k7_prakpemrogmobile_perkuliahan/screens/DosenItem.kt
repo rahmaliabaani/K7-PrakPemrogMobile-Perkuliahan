@@ -48,7 +48,7 @@ fun DosenItem(item: Dosen, navController: NavHostController, onDelete: (String) 
                 Text(item.nidn, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
 
-            Column(modifier = Modifier.weight(3f)) {
+            Column(modifier = Modifier.weight(6f)) {
                 Text(text = "Nama", fontSize = 14.sp)
                 Text("${item.gelar_depan} ${item.nama} ${item.gelar_belakang}", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
