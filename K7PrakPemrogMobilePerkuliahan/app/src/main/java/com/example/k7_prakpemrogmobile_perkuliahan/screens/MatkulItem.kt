@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,32 +41,27 @@ NavHostController, onDelete: (String) -> Unit) {
     val confirmationDialogState = rememberMaterialDialogState()
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(modifier = Modifier
-            .padding(15.dp)
+            .padding(start = 15.dp, top= 15.dp, end = 15.dp)
             .fillMaxWidth()) {
             Column(modifier = Modifier.weight(3f)) {
                 Text(text = "Kode", fontSize = 14.sp)
                 Text(item.kode, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
 
-            Column(modifier = Modifier.weight(3f)) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "SKS", fontSize = 14.sp)
+                Text(text = "${item.sks}", textAlign = TextAlign.Center, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            }
+
+            Column(modifier = Modifier.weight(5f)) {
                 Text(text = "Nama", fontSize = 14.sp)
                 Text(text = item.nama, fontSize = 16.sp,
                     fontWeight = FontWeight.Bold)
             }
 
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "SKS", fontSize = 14.sp)
-                Text(text = "${item.sks}", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            }
-
-            Column(modifier = Modifier.weight(3f)) {
+            Column(modifier = Modifier.weight(2f)) {
                 Text(text = "Praktikum", fontSize = 14.sp)
-                Text(text = item.praktikum.toString(), fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            }
-
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Deskripsi", fontSize = 14.sp)
-                Text(item.deskripsi, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text(text = if(item.praktikum.equals(1)){"Ya"}else{"Tidak"}, fontSize = 16.sp, fontWeight = FontWeight.Bold,textAlign = TextAlign.Center)
             }
             Icon(
                 Icons.Default.MoreVert,
@@ -80,28 +76,39 @@ NavHostController, onDelete: (String) -> Unit) {
                 contentDescription = null,
                 tint = Color.Unspecified
             )
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            offset = DpOffset(x = (-66).dp, y = (-10).dp)
-        ) {
-            subMenus.forEachIndexed { _, s ->
-                DropdownMenuItem(onClick = {
-                    expanded = false
-                    when (s) {
-                        "Edit" -> {
-                            navController.navigate("edit-matkul/${item.id}")
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                offset = DpOffset(x = (-66).dp, y = (-10).dp)
+            ) {
+                subMenus.forEachIndexed { _, s ->
+                    DropdownMenuItem(onClick = {
+                        expanded = false
+                        when (s) {
+                            "Edit" -> {
+                                navController.navigate("edit-matkul/${item.id}")
+                            }
+                            "Delete" -> {
+                                confirmationDialogState.show()
+                            }
                         }
-                        "Delete" -> {
-                            confirmationDialogState.show()
-                        }
+                    }) {
+                        Text(text = s)
                     }
-                }) {
-                    Text(text = s)
                 }
             }
         }
+
+        Row(modifier = Modifier
+            .padding(start = 15.dp,top = 5.dp, end = 15.dp, bottom = 15.dp)
+            .fillMaxWidth()) {
+            Column(modifier = Modifier.weight(3f)) {
+                Text(text = "Deskripsi", fontSize = 14.sp)
+                Text(item.deskripsi, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            }
+        }
+
+
     }
     Divider(modifier = Modifier.fillMaxWidth())
     MaterialDialog(dialogState = confirmationDialogState,
