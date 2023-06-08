@@ -34,7 +34,7 @@ fun DosenScreen(navController : NavHostController, modifier: Modifier = Modifier
     Column(modifier = modifier.fillMaxWidth()) {
         Button(onClick = {
             navController.navigate("tambah-dosen")
-        }) {
+        }, Modifier.padding(start = 15.dp, top = 10.dp)) {
             Text(text = "Tambah")
         }
 
