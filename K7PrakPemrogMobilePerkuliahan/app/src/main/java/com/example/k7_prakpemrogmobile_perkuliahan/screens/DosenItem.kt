@@ -63,7 +63,7 @@ fun DosenItem(item: Dosen, navController: NavHostController, onDelete: (String) 
                 modifier = Modifier
                     .height(40.dp)
                     .width(40.dp)
-                    .padding(8.dp)
+                    .padding(0.dp)
                     .weight(1f, true)
                     .clickable {
                         expanded = true

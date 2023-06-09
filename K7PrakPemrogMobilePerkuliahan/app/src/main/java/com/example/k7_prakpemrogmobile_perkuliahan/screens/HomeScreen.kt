@@ -1,127 +1,63 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.k7_prakpemrogmobile_perkuliahan.R
+import dagger.hilt.android.AndroidEntryPoint
 
-@Composable @Preview
-fun HomeScreen () {
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
+@Composable
+fun HomeScreen(
+    painter: Painter,
+    contentDescription: String,
+    title: String,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(15.dp),
+        elevation = 5.dp
     ) {
-        Column {
-            Card(modifier = Modifier
-                .size(170.dp)
-                .padding(15.dp),
-                shape = RoundedCornerShape(25.dp),
-                elevation = 45.dp
+        Box(modifier = Modifier.height(200.dp)) {
+            Image(
+                painter = painter,
+                contentDescription = contentDescription,
+                contentScale = ContentScale.Crop
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Black
+                            ),
+                            startY = 300f
+                        )
+                    )
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp),
+                contentAlignment = Alignment.BottomStart
             ) {
-                Image(painter = painterResource(id = R.drawable.agung), "",
-                    modifier = Modifier
-                        .width(50.dp)
-                        .height(50.dp)
-                )
-            }
-            Text("Agung Septiana\n203040102\n", Modifier.padding(start = 15.dp, end =  15.dp, bottom =  15.dp))
-        }
-        Column {
-            Card(modifier = Modifier
-                .size(170.dp)
-                .padding(15.dp),
-                shape = RoundedCornerShape(25.dp),
-                elevation = 45.dp
-            ){
-                Image(painter = painterResource(id = R.drawable.ulum), "",
-                    modifier = Modifier
-                        .width(50.dp)
-                        .height(50.dp)
-                )
-            }
-
-            Text("Bahrul Ulum\n203040089\n", Modifier.padding(start = 15.dp, end =  15.dp, bottom =  15.dp))
-        }
-        Column {
-            Card(modifier = Modifier
-                .size(170.dp)
-                .padding(15.dp),
-                shape = RoundedCornerShape(25.dp),
-                elevation = 45.dp
-            ){
-                Image(painter = painterResource(id = R.drawable.rahma), "",
-                    modifier = Modifier
-                        .width(50.dp)
-                        .height(50.dp)
-                )
-            }
-            Text("Rahmalia Nuursya'baani\n203040084\n", Modifier.padding(start = 15.dp, end =  15.dp, bottom =  15.dp))
-        }
-    }
-
-    Row(modifier = Modifier
-        .fillMaxSize(),
-        horizontalArrangement = Arrangement.End,
-        verticalAlignment = Alignment.Top
-    ) {
-        Column {
-            Column {
-                Card(modifier = Modifier
-                    .size(170.dp)
-                    .padding(15.dp),
-                    shape = RoundedCornerShape(25.dp),
-                    elevation = 45.dp
-                ) {
-                    Image(painter = painterResource(id = R.drawable.anam), "",
-                        modifier = Modifier
-                            .width(50.dp)
-                            .height(50.dp)
-                    )
-                }
-                Text("Khoerul Anam\n203040096\n", Modifier.padding(start = 15.dp, end =  15.dp, bottom =  15.dp))
-
-            }
-
-            Column {
-                Card(modifier = Modifier
-                    .size(170.dp)
-                    .padding(15.dp),
-                    shape = RoundedCornerShape(25.dp),
-                    elevation = 45.dp
-                ) {
-                    Image(painter = painterResource(id = R.drawable.febrian), "",
-                        modifier = Modifier
-                            .width(50.dp)
-                            .height(50.dp)
-                    )
-                }
-                Text("Febrian Fauzan R\n203040057\n", Modifier.padding(start = 15.dp, end =  15.dp, bottom =  15.dp))
-            }
-
-            Column {
-                Card(modifier = Modifier
-                    .size(170.dp)
-                    .padding(15.dp),
-                    shape = RoundedCornerShape(25.dp),
-                    elevation = 45.dp
-                ){
-                    Image(painter = painterResource(id = R.drawable.logo), "",
-                        modifier = Modifier
-                            .width(50.dp)
-                            .height(50.dp)
-                    )
-                }
-                Text("K7 Perkuliahan", Modifier.padding(start = 15.dp, end =  15.dp, bottom =  15.dp))
+                Text(title, style = TextStyle(color = Color.White, fontSize = 16.sp))
             }
         }
     }

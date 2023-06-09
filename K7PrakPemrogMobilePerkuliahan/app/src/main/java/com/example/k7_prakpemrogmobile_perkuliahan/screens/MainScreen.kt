@@ -1,6 +1,8 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -8,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
@@ -15,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.k7_prakpemrogmobile_perkuliahan.R
 import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Purple700
 import kotlinx.coroutines.launch
 
@@ -25,6 +29,7 @@ fun MainScreen() {
     val scaffoldState = rememberScaffoldState()
     val title = remember { mutableStateOf("") }
     val appBarHorizontalPadding = 4.dp
+    val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -116,7 +121,76 @@ fun MainScreen() {
             NavHost(navController = navController, startDestination = "home") {
                 composable("home") {
                     title.value = "Home"
-                    HomeScreen()
+                    Column( modifier = Modifier
+                        .padding(10.dp)
+                        .fillMaxWidth()
+                        .verticalScroll(state = scrollState)
+                    ) {
+
+                        Row (
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Box(modifier = Modifier
+                                .fillMaxWidth(0.5f)
+                                .padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.febrian),
+                                    contentDescription = "Febrian",
+                                    title = "Febrian Fauzan Rachman - 203040057"
+                                )
+                            }
+
+                            Box(modifier = Modifier.padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.rahma),
+                                    contentDescription = "Rahma",
+                                    title = "Rahmalia Nuursya'baani - 203040084"
+                                )
+                            }
+                        }
+
+                        Row (
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Box(modifier = Modifier
+                                .fillMaxWidth(0.5f)
+                                .padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.ulum),
+                                    contentDescription = "Bahrul",
+                                    title = "Bahrul Ulum - 203040089"
+                                )
+                            }
+
+                            Box(modifier = Modifier.padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.anam),
+                                    contentDescription = "Khoerul",
+                                    title = "Khoerul Anam - 203040096"
+                                )
+                            }
+
+                        }
+                        Row (
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Box(modifier = Modifier
+                                .fillMaxWidth(0.5f)
+                                .padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.agung),
+                                    contentDescription = "Agung",
+                                    title = "Agung Septiana - 203040102"
+                                )
+                            }
+                        }
+                        Column( modifier = Modifier
+                            .padding(30.dp)
+                            .fillMaxWidth()
+                        ) {
+
+                        }
+                    }
                 }
 //route dosen
                 composable("dosen") {
