@@ -91,18 +91,12 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             enabled = false
         )
 
-
-        Row(
-            modifier = Modifier
-                .padding(4.dp)
-                .fillMaxWidth()
-        ) {
-            RadioButton(
-                selected = jenis_kelamin.value == "Laki-laki",
-                onClick = { jenis_kelamin.value = "Laki-laki" },
-                colors = RadioButtonDefaults.colors(
-                    Purple700
-                )
+        Row(modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()) {
+            RadioButton(selected = jenis_kelamin.value == "Laki-laki",
+                        onClick = { jenis_kelamin.value = "Laki-laki" },
+                        colors = RadioButtonDefaults.colors(Purple700),
             )
             Text(text = "Laki-laki", modifier = Modifier.padding(14.dp))
             RadioButton(
@@ -203,3 +197,4 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             }
         }
     }
+
