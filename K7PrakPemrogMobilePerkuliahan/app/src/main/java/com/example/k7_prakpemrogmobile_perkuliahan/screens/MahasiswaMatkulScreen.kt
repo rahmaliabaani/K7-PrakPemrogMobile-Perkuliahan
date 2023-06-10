@@ -38,9 +38,11 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
     val scope = rememberCoroutineScope()
     val isLoading = remember { mutableStateOf(false) }
     val buttonLabel = if (isLoading.value) "Mohon tunggu..." else "Simpan"
-    Column(modifier = Modifier
-        .padding(10.dp)
-        .fillMaxWidth()) {
+    Column(
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
+    ) {
         OutlinedTextField(
             label = { Text(text = "NPM") },
             value = npm.value,
@@ -50,8 +52,10 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(keyboardType =
-            KeyboardType.Decimal),
+            keyboardOptions = KeyboardOptions(
+                keyboardType =
+                KeyboardType.Decimal
+            ),
             placeholder = { Text(text = "NPM") }
         )
 
@@ -64,8 +68,10 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(capitalization =
-            KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
+            keyboardOptions = KeyboardOptions(
+                capitalization =
+                KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text
+            ),
             placeholder = { Text(text = "XXXXX") }
         )
 
@@ -81,7 +87,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 .clickable {
                     tanggalDialogState.show()
                 },
-            placeholder = {Text(text = "yyyy-mm-dd")},
+            placeholder = { Text(text = "yyyy-mm-dd") },
             enabled = false
         )
 
@@ -93,95 +99,100 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                         colors = RadioButtonDefaults.colors(Purple700),
             )
             Text(text = "Laki-laki", modifier = Modifier.padding(14.dp))
-            RadioButton(selected = jenis_kelamin.value == "Perempuan",
+            RadioButton(
+                selected = jenis_kelamin.value == "Perempuan",
                 onClick = { jenis_kelamin.value = "Perempuan" },
-                colors = RadioButtonDefaults.colors(Purple700),
+                colors = RadioButtonDefaults.colors(
+                    Purple700
+                )
             )
             Text(text = "Perempuan", modifier = Modifier.padding(14.dp))
-        }
 
-        val loginButtonColors = ButtonDefaults.buttonColors(
-            backgroundColor = Purple700,
-            contentColor = Teal200
-        )
-        val resetButtonColors = ButtonDefaults.buttonColors(
-            backgroundColor = Teal200,
-            contentColor = Purple700
-        )
-        Row (modifier = Modifier
-            .padding(4.dp)
-            .fillMaxWidth()) {
-            Button(modifier = Modifier.weight(5f), onClick = {
-                if (id == null) {
-                    scope.launch {
-                        viewModel.insert(
-                            npm.value.text,
-                            nama.value.text,
-                            tanggal_lahir.value.text,
-                            jenis_kelamin.value
-                        )
+            val loginButtonColors = ButtonDefaults.buttonColors(
+                backgroundColor = Purple700,
+                contentColor = Teal200
+            )
+            val resetButtonColors = ButtonDefaults.buttonColors(
+                backgroundColor = Teal200,
+                contentColor = Purple700
+            )
+            Row(
+                modifier = Modifier
+                    .padding(4.dp)
+                    .fillMaxWidth()
+            ) {
+                Button(modifier = Modifier.weight(5f), onClick = {
+                    if (id == null) {
+                        scope.launch {
+                            viewModel.insert(
+                                npm.value.text,
+                                nama.value.text,
+                                tanggal_lahir.value.text,
+                                jenis_kelamin.value
+                            )
+                        }
+                    } else {
+                        scope.launch {
+                            viewModel.update(
+                                id,
+                                npm.value.text,
+                                nama.value.text,
+                                tanggal_lahir.value.text,
+                                jenis_kelamin.value
+                            )
+                        }
                     }
-                } else {
-                    scope.launch {
-                        viewModel.update(
-                            id,
-                            npm.value.text,
-                            nama.value.text,
-                            tanggal_lahir.value.text,
-                            jenis_kelamin.value
-                        )
-                    }
+                    navController.navigate("mahasiswa")
+                }, colors = loginButtonColors) {
+                    Text(
+                        text = buttonLabel,
+                        style = TextStyle(
+                            color = Color.White,
+                            fontSize = 18.sp
+                        ), modifier = Modifier.padding(8.dp)
+                    )
                 }
-                navController.navigate("mahasiswa")
-            }, colors = loginButtonColors) {
-                Text(
-                    text = buttonLabel,
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp
-                    ), modifier = Modifier.padding(8.dp)
-                )
-            }
-            Button(modifier = Modifier.weight(5f), onClick = {
-                npm.value = TextFieldValue("")
-                nama.value = TextFieldValue("")
-                tanggal_lahir.value = TextFieldValue("")
-                jenis_kelamin.value = ""
-            }, colors = resetButtonColors) {
-                Text(
-                    text = "Reset",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp
-                    ), modifier = Modifier.padding(8.dp)
-                )
-            }
-        }
-    }
-    viewModel.isLoading.observe(LocalLifecycleOwner.current) {
-        isLoading.value = it
-    }
-
-    if (id != null) {
-        LaunchedEffect(scope) {
-            viewModel.loadItem(id) { mahasiswa ->
-                mahasiswa?.let {
-                    npm.value = TextFieldValue(mahasiswa.npm)
-                    nama.value = TextFieldValue(mahasiswa.nama)
-                    tanggal_lahir.value = TextFieldValue(mahasiswa.tanggal_lahir)
-                    jenis_kelamin.value = mahasiswa.jenis_kelamin
-
+                Button(modifier = Modifier.weight(5f), onClick = {
+                    npm.value = TextFieldValue("")
+                    nama.value = TextFieldValue("")
+                    tanggal_lahir.value = TextFieldValue("")
+                    jenis_kelamin.value = ""
+                }, colors = resetButtonColors) {
+                    Text(
+                        text = "Reset",
+                        style = TextStyle(
+                            color = Color.White,
+                            fontSize = 18.sp
+                        ), modifier = Modifier.padding(8.dp)
+                    )
                 }
             }
         }
-    }
+        viewModel.isLoading.observe(LocalLifecycleOwner.current) {
+            isLoading.value = it
+        }
 
-    MaterialDialog(dialogState = tanggalDialogState, buttons = {
-        positiveButton("OK")
-        negativeButton("Batal")
-    }) {
-        datepicker {date ->
-            tanggal_lahir.value = TextFieldValue(date.format(DateTimeFormatter.ISO_LOCAL_DATE))
+        if (id != null) {
+            LaunchedEffect(scope) {
+                viewModel.loadItem(id) { mahasiswa ->
+                    mahasiswa?.let {
+                        npm.value = TextFieldValue(mahasiswa.npm)
+                        nama.value = TextFieldValue(mahasiswa.nama)
+                        tanggal_lahir.value = TextFieldValue(mahasiswa.tanggal_lahir)
+                        jenis_kelamin.value = mahasiswa.jenis_kelamin
+
+                    }
+                }
+            }
+        }
+
+        MaterialDialog(dialogState = tanggalDialogState, buttons = {
+            positiveButton("OK")
+            negativeButton("Batal")
+        }) {
+            datepicker { date ->
+                tanggal_lahir.value = TextFieldValue(date.format(DateTimeFormatter.ISO_LOCAL_DATE))
+            }
         }
     }
 }
