@@ -1,5 +1,7 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -40,8 +42,9 @@ fun MainScreen() {
                 //TopAppBar Content
                 Box(Modifier.height(32.dp)) {
                     Row(
-                        Modifier.fillMaxHeight()
-                        .width(72.dp - appBarHorizontalPadding),
+                        Modifier
+                            .fillMaxHeight()
+                            .width(72.dp - appBarHorizontalPadding),
                         verticalAlignment = Alignment.CenterVertically) {
                         CompositionLocalProvider(
                             LocalContentAlpha provides
@@ -121,8 +124,9 @@ fun MainScreen() {
             NavHost(navController = navController, startDestination = "home") {
                 composable("home") {
                     title.value = "Home"
+
                     Column( modifier = Modifier
-                        .padding(10.dp)
+                        .padding(16.dp)
                         .fillMaxWidth()
                         .verticalScroll(state = scrollState)
                     ) {
@@ -132,6 +136,45 @@ fun MainScreen() {
                         ) {
                             Box(modifier = Modifier
                                 .fillMaxWidth(0.5f)
+                                .padding(16.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.logo),
+                                    contentDescription = "Kelompok 7",
+                                    title = "Kelompok 7 membahas perkuliahan"
+                                )
+                            }
+
+                            Box(modifier = Modifier.padding(16.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.logo),
+                                    contentDescription = "Kelompok 1",
+                                    title = "Kelompok 1 membahas perkuliahan"
+                                )
+                            }
+
+                        }
+
+                        Row (
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Box(modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .padding(16.dp)) {
+                            HomeScreen(
+                                painter = painterResource(id = R.drawable.logo),
+                                contentDescription = "Kelompok 7",
+                                title = "Kelompok 7 membahas perkuliahan"
+                            )
+                        }
+
+                        Box(modifier = Modifier.padding(16.dp)) {
+                            HomeScreen(
+                                painter = painterResource(id = R.drawable.logo),
+                                contentDescription = "Kelompok 1",
+                                title = "Kelompok 1 membahas perkuliahan"
+                            )
+                        }
+=======
                                 .padding(10.dp)) {
                                 HomeScreen(
                                     painter = painterResource(id = R.drawable.febrian),
@@ -176,6 +219,16 @@ fun MainScreen() {
                         ) {
                             Box(modifier = Modifier
                                 .fillMaxWidth(0.5f)
+                                .padding(16.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.logo),
+                                    contentDescription = "Kelompok 7",
+                                    title = "Kelompok 7 membahas perkuliahan"
+                                )
+                            }
+                        }
+
+                    }
                                 .padding(10.dp)) {
                                 HomeScreen(
                                     painter = painterResource(id = R.drawable.agung),

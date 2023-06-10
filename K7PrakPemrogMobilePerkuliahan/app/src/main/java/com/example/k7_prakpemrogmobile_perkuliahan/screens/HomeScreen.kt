@@ -54,7 +54,7 @@ fun HomeScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(10.dp),
+                    .padding(12.dp),
                 contentAlignment = Alignment.BottomStart
             ) {
                 Text(title, style = TextStyle(color = Color.White, fontSize = 16.sp))

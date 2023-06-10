@@ -50,7 +50,9 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "NPM") },
+            keyboardOptions = KeyboardOptions(keyboardType =
+            KeyboardType.Decimal),
+            placeholder = { Text(text = "NPM") }
         )
 
         OutlinedTextField(
@@ -83,17 +85,15 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             enabled = false
         )
 
-//        OutlinedTextField(
-//            label = { Text(text = "Jenis Kelamin") },
-//            value = jenis_kelamin.value,
-//            onValueChange = {
-//                jenis_kelamin.value = it
-//            },
-//            modifier = Modifier
-//                .padding(4.dp)
-//                .fillMaxWidth(),
-//            placeholder = { Text(text = "L/P") }
-//        )
+
+        Row(modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()) {
+            RadioButton(selected = jenis_kelamin.value == "Laki-laki", onClick = { jenis_kelamin.value = "Laki-laki"}, colors = RadioButtonDefaults.colors(
+                Purple700))
+            Text(text = "Laki-laki", modifier = Modifier.padding(14.dp))
+            RadioButton(selected = jenis_kelamin.value == "Perempuan", onClick = { jenis_kelamin.value = "Perempuan"}, colors = RadioButtonDefaults.colors(
+                Purple700))
         Row(modifier = Modifier
             .padding(4.dp)
             .fillMaxWidth()) {
@@ -178,7 +178,8 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                     npm.value = TextFieldValue(mahasiswa.npm)
                     nama.value = TextFieldValue(mahasiswa.nama)
                     tanggal_lahir.value = TextFieldValue(mahasiswa.tanggal_lahir)
-                    jenis_kelamin.value = ""
+                    jenis_kelamin.value = mahasiswa.jenis_kelamin
+
                 }
             }
         }
