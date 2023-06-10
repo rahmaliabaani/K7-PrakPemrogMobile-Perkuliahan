@@ -107,6 +107,8 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 )
             )
             Text(text = "Perempuan", modifier = Modifier.padding(14.dp))
+        }
+
 
             val loginButtonColors = ButtonDefaults.buttonColors(
                 backgroundColor = Purple700,
@@ -195,4 +197,4 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             }
         }
     }
-}
+
