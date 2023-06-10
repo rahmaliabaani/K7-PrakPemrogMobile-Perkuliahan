@@ -34,7 +34,7 @@ fun MatkulScreen(navController : NavHostController, modifier: Modifier = Modifie
     Column(modifier = modifier.fillMaxWidth()) {
         Button(onClick = {
             navController.navigate("tambah-matkul")
-        }) {
+        }, Modifier.padding(start = 15.dp, top = 10.dp)) {
             Text(text = "Tambah")
         }
 

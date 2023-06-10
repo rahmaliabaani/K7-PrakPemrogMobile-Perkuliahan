@@ -10,11 +10,5 @@ data class Dosen (
     val nama: String,
     val gelar_depan: String,
     val gelar_belakang: String,
-//    val pendidikan: Pendidikan
     val pendidikan : String
 )
-
-//enum class Pendidikan (val pendidikan: String) {
-//    s2("S2"),
-//    s3("S3")
-//}

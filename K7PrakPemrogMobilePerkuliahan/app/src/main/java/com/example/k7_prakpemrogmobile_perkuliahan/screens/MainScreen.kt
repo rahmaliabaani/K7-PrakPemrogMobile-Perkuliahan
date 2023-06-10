@@ -174,6 +174,44 @@ fun MainScreen() {
                                 title = "Kelompok 1 membahas perkuliahan"
                             )
                         }
+=======
+                                .padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.febrian),
+                                    contentDescription = "Febrian",
+                                    title = "Febrian Fauzan Rachman - 203040057"
+                                )
+                            }
+
+                            Box(modifier = Modifier.padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.rahma),
+                                    contentDescription = "Rahma",
+                                    title = "Rahmalia Nuursya'baani - 203040084"
+                                )
+                            }
+                        }
+
+                        Row (
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Box(modifier = Modifier
+                                .fillMaxWidth(0.5f)
+                                .padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.ulum),
+                                    contentDescription = "Bahrul",
+                                    title = "Bahrul Ulum - 203040089"
+                                )
+                            }
+
+                            Box(modifier = Modifier.padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.anam),
+                                    contentDescription = "Khoerul",
+                                    title = "Khoerul Anam - 203040096"
+                                )
+                            }
 
                         }
                         Row (
@@ -191,7 +229,21 @@ fun MainScreen() {
                         }
 
                     }
+                                .padding(10.dp)) {
+                                HomeScreen(
+                                    painter = painterResource(id = R.drawable.agung),
+                                    contentDescription = "Agung",
+                                    title = "Agung Septiana - 203040102"
+                                )
+                            }
+                        }
+                        Column( modifier = Modifier
+                            .padding(30.dp)
+                            .fillMaxWidth()
+                        ) {
 
+                        }
+                    }
                 }
 //route dosen
                 composable("dosen") {

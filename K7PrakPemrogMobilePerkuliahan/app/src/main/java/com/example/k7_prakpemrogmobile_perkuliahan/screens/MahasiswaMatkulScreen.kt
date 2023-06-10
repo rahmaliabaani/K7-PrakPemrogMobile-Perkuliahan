@@ -54,6 +54,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             KeyboardType.Decimal),
             placeholder = { Text(text = "NPM") }
         )
+
         OutlinedTextField(
             label = { Text(text = "Nama") },
             value = nama.value,
@@ -67,6 +68,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
             placeholder = { Text(text = "XXXXX") }
         )
+
         OutlinedTextField(
             label = { Text(text = "Tanggal Lahir") },
             value = tanggal_lahir.value,
@@ -83,6 +85,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             enabled = false
         )
 
+
         Row(modifier = Modifier
             .padding(4.dp)
             .fillMaxWidth()) {
@@ -91,6 +94,18 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             Text(text = "Laki-laki", modifier = Modifier.padding(14.dp))
             RadioButton(selected = jenis_kelamin.value == "Perempuan", onClick = { jenis_kelamin.value = "Perempuan"}, colors = RadioButtonDefaults.colors(
                 Purple700))
+        Row(modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()) {
+            RadioButton(selected = jenis_kelamin.value == "Laki-laki",
+                        onClick = { jenis_kelamin.value = "Laki-laki" },
+                        colors = RadioButtonDefaults.colors(Purple700),
+            )
+            Text(text = "Laki-laki", modifier = Modifier.padding(14.dp))
+            RadioButton(selected = jenis_kelamin.value == "Perempuan",
+                onClick = { jenis_kelamin.value = "Perempuan" },
+                colors = RadioButtonDefaults.colors(Purple700),
+            )
             Text(text = "Perempuan", modifier = Modifier.padding(14.dp))
         }
 
@@ -164,6 +179,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                     nama.value = TextFieldValue(mahasiswa.nama)
                     tanggal_lahir.value = TextFieldValue(mahasiswa.tanggal_lahir)
                     jenis_kelamin.value = mahasiswa.jenis_kelamin
+
                 }
             }
         }
