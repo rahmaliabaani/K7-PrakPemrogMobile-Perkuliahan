@@ -23,6 +23,8 @@ import androidx.navigation.navArgument
 import com.example.k7_prakpemrogmobile_perkuliahan.R
 import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Purple700
 import kotlinx.coroutines.launch
+import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.res.painterResource
 
 @Composable
 fun MainScreen() {
@@ -37,7 +39,8 @@ fun MainScreen() {
             TopAppBar(
                 backgroundColor = Purple700,
                 elevation = 0.dp,
-                modifier= Modifier.fillMaxWidth())
+                modifier = Modifier.fillMaxWidth()
+            )
             {
                 //TopAppBar Content
                 Box(Modifier.height(32.dp)) {
@@ -45,7 +48,8 @@ fun MainScreen() {
                         Modifier
                             .fillMaxHeight()
                             .width(72.dp - appBarHorizontalPadding),
-                        verticalAlignment = Alignment.CenterVertically) {
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         CompositionLocalProvider(
                             LocalContentAlpha provides
                                     ContentAlpha.high,
@@ -60,7 +64,8 @@ fun MainScreen() {
                             ) {
                                 Icon(
                                     Icons.Filled.Menu, null,
-                                    tint = Color.White)
+                                    tint = Color.White
+                                )
                             }
                         }
                     }
@@ -68,13 +73,16 @@ fun MainScreen() {
                     Row(
                         Modifier.fillMaxSize(),
                         verticalAlignment =
-                        Alignment.CenterVertically) {
-                        ProvideTextStyle(value =
-                        MaterialTheme.typography.h6) {
+                        Alignment.CenterVertically
+                    ) {
+                        ProvideTextStyle(
+                            value =
+                            MaterialTheme.typography.h6
+                        ) {
                             CompositionLocalProvider(
                                 LocalContentAlpha provides
                                         ContentAlpha.high,
-                            ){
+                            ) {
                                 Text(
                                     modifier =
                                     Modifier.fillMaxWidth(),
@@ -125,57 +133,21 @@ fun MainScreen() {
                 composable("home") {
                     title.value = "Home"
 
-                    Column( modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxWidth()
-                        .verticalScroll(state = scrollState)
+                    Column(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth()
+                            .verticalScroll(state = scrollState)
                     ) {
 
-                        Row (
+                        Row(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Box(modifier = Modifier
-                                .fillMaxWidth(0.5f)
-                                .padding(16.dp)) {
-                                HomeScreen(
-                                    painter = painterResource(id = R.drawable.logo),
-                                    contentDescription = "Kelompok 7",
-                                    title = "Kelompok 7 membahas perkuliahan"
-                                )
-                            }
-
-                            Box(modifier = Modifier.padding(16.dp)) {
-                                HomeScreen(
-                                    painter = painterResource(id = R.drawable.logo),
-                                    contentDescription = "Kelompok 1",
-                                    title = "Kelompok 1 membahas perkuliahan"
-                                )
-                            }
-
-                        }
-
-                        Row (
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Box(modifier = Modifier
-                            .fillMaxWidth(0.5f)
-                            .padding(16.dp)) {
-                            HomeScreen(
-                                painter = painterResource(id = R.drawable.logo),
-                                contentDescription = "Kelompok 7",
-                                title = "Kelompok 7 membahas perkuliahan"
-                            )
-                        }
-
-                        Box(modifier = Modifier.padding(16.dp)) {
-                            HomeScreen(
-                                painter = painterResource(id = R.drawable.logo),
-                                contentDescription = "Kelompok 1",
-                                title = "Kelompok 1 membahas perkuliahan"
-                            )
-                        }
-=======
-                                .padding(10.dp)) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.5f)
+                                    .padding(10.dp)
+                            ) {
                                 HomeScreen(
                                     painter = painterResource(id = R.drawable.febrian),
                                     contentDescription = "Febrian",
@@ -192,12 +164,14 @@ fun MainScreen() {
                             }
                         }
 
-                        Row (
+                        Row(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Box(modifier = Modifier
-                                .fillMaxWidth(0.5f)
-                                .padding(10.dp)) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.5f)
+                                    .padding(10.dp)
+                            ) {
                                 HomeScreen(
                                     painter = painterResource(id = R.drawable.ulum),
                                     contentDescription = "Bahrul",
@@ -214,22 +188,14 @@ fun MainScreen() {
                             }
 
                         }
-                        Row (
+                        Row(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Box(modifier = Modifier
-                                .fillMaxWidth(0.5f)
-                                .padding(16.dp)) {
-                                HomeScreen(
-                                    painter = painterResource(id = R.drawable.logo),
-                                    contentDescription = "Kelompok 7",
-                                    title = "Kelompok 7 membahas perkuliahan"
-                                )
-                            }
-                        }
-
-                    }
-                                .padding(10.dp)) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.5f)
+                                    .padding(10.dp)
+                            ) {
                                 HomeScreen(
                                     painter = painterResource(id = R.drawable.agung),
                                     contentDescription = "Agung",
@@ -237,90 +203,109 @@ fun MainScreen() {
                                 )
                             }
                         }
-                        Column( modifier = Modifier
-                            .padding(30.dp)
-                            .fillMaxWidth()
+                        Column(
+                            modifier = Modifier
+                                .padding(30.dp)
+                                .fillMaxWidth()
                         ) {
 
                         }
                     }
                 }
 //route dosen
-                composable("dosen") {
-                    title.value = "Dosen"
-                    DosenScreen(navController = navController,
-                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
-                        Modifier.padding(innerPadding))
-                }
-                composable("tambah-dosen") {
-                    title.value = "Tambah Dosen"
-                    FormDosenScreen(navController =
-                    navController, modifier = Modifier.padding(innerPadding))
-                }
-                composable("edit-dosen/{id}",
-                    listOf(
-                        navArgument("id") {
-                            type = NavType.StringType
+                        composable("dosen") {
+                            title.value = "Dosen"
+                            DosenScreen(
+                                navController = navController,
+                                snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                                Modifier.padding(innerPadding)
+                            )
                         }
-                    )) { backStackEntry ->
-                    title.value = "Edit Dosen"
-                    val id =
-                        backStackEntry.arguments?.getString("id")
-                            ?: return@composable
-                    FormDosenScreen(navController = navController, id = id, modifier =
-                    Modifier.padding(innerPadding))
-                }
+                        composable("tambah-dosen") {
+                            title.value = "Tambah Dosen"
+                            FormDosenScreen(
+                                navController =
+                                navController, modifier = Modifier.padding(innerPadding)
+                            )
+                        }
+                        composable("edit-dosen/{id}",
+                            listOf(
+                                navArgument("id") {
+                                    type = NavType.StringType
+                                }
+                            )) { backStackEntry ->
+                            title.value = "Edit Dosen"
+                            val id =
+                                backStackEntry.arguments?.getString("id")
+                                    ?: return@composable
+                            FormDosenScreen(
+                                navController = navController, id = id, modifier =
+                                Modifier.padding(innerPadding)
+                            )
+                        }
 //route mahasiswa
-                composable("mahasiswa") {
-                    title.value = "Mahasiswa"
-                    MahasiswaScreen(navController = navController,
-                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
-                        Modifier.padding(innerPadding))
-                }
-                composable("tambah-mahasiswa") {
-                    title.value = "Tambah Mahasiswa"
-                    FormMahasiswaScreen(navController =
-                    navController, modifier = Modifier.padding(innerPadding))
-                }
-                composable("edit-mahasiswa/{id}",
-                    listOf(
-                        navArgument("id") {
-                            type = NavType.StringType
+                        composable("mahasiswa") {
+                            title.value = "Mahasiswa"
+                            MahasiswaScreen(
+                                navController = navController,
+                                snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                                Modifier.padding(innerPadding)
+                            )
                         }
-                    )) { backStackEntry ->
-                    title.value = "Edit Mahasiswa"
-                    val id =
-                        backStackEntry.arguments?.getString("id")
-                            ?: return@composable
-                    FormMahasiswaScreen(navController = navController, id = id, modifier =
-                    Modifier.padding(innerPadding))
-                }
+                        composable("tambah-mahasiswa") {
+                            title.value = "Tambah Mahasiswa"
+                            FormMahasiswaScreen(
+                                navController =
+                                navController, modifier = Modifier.padding(innerPadding)
+                            )
+                        }
+                        composable("edit-mahasiswa/{id}",
+                            listOf(
+                                navArgument("id") {
+                                    type = NavType.StringType
+                                }
+                            )) { backStackEntry ->
+                            title.value = "Edit Mahasiswa"
+                            val id =
+                                backStackEntry.arguments?.getString("id")
+                                    ?: return@composable
+                            FormMahasiswaScreen(
+                                navController = navController, id = id, modifier =
+                                Modifier.padding(innerPadding)
+                            )
+                        }
 //                route matkul
-                composable("matkul") {
-                    title.value = "Matakuliah"
-                    MatkulScreen(navController = navController,
-                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
-                        Modifier.padding(innerPadding))
-                }
-                composable("tambah-matkul") {
-                    title.value = "Tambah Matakuliah"
-                    FormMatkulScreen(navController =
-                    navController, modifier = Modifier.padding(innerPadding))
-                }
-                composable("edit-matkul/{id}",
-                    listOf(
-                        navArgument("id") {
-                            type = NavType.StringType
+                        composable("matkul") {
+                            title.value = "Matakuliah"
+                            MatkulScreen(
+                                navController = navController,
+                                snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                                Modifier.padding(innerPadding)
+                            )
                         }
-                    )) { backStackEntry ->
-                    title.value = "Edit Matakuliah"
-                    val id =
-                        backStackEntry.arguments?.getString("id")
-                            ?: return@composable
-                    FormMatkulScreen(navController = navController, id = id, modifier =
-                    Modifier.padding(innerPadding))
+                        composable("tambah-matkul") {
+                            title.value = "Tambah Matakuliah"
+                            FormMatkulScreen(
+                                navController =
+                                navController, modifier = Modifier.padding(innerPadding)
+                            )
+                        }
+                        composable("edit-matkul/{id}",
+                            listOf(
+                                navArgument("id") {
+                                    type = NavType.StringType
+                                }
+                            )) { backStackEntry ->
+                            title.value = "Edit Matakuliah"
+                            val id =
+                                backStackEntry.arguments?.getString("id")
+                                    ?: return@composable
+                            FormMatkulScreen(
+                                navController = navController, id = id, modifier =
+                                Modifier.padding(innerPadding)
+                            )
+                        }
+                    }
                 }
             }
         }
-    }
-}
