@@ -47,7 +47,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             label = { Text(text = "NPM") },
             value = npm.value,
             onValueChange = {
-                npm.value = it
+                if (it.text.length <= 12) npm.value = it
             },
             modifier = Modifier
                 .padding(4.dp)
@@ -56,7 +56,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 keyboardType =
                 KeyboardType.Decimal
             ),
-            placeholder = { Text(text = "NPM") }
+            placeholder = { Text(text = "202020020") }
         )
 
         OutlinedTextField(
@@ -68,11 +68,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(
-                capitalization =
-                KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text
-            ),
-            placeholder = { Text(text = "XXXXX") }
+            placeholder = { Text(text = "Rina Tiana") }
         )
 
         OutlinedTextField(
