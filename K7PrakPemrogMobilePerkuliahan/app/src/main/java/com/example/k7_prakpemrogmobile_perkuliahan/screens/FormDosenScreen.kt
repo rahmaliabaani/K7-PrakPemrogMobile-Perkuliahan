@@ -57,13 +57,14 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             value = nidn.value,
             onValueChange = {
                 nidn.value = it
+                if (it.text.length <= 12) nidn.value = it
             },
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType =
             KeyboardType.Decimal),
-            placeholder = { Text(text = "2") }
+            placeholder = { Text(text = "000107560345") }
         )
         OutlinedTextField(
             label = { Text(text = "Nama") },
@@ -74,7 +75,7 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "IF231") }
+            placeholder = { Text(text = "Santoso") }
         )
         OutlinedTextField(
             label = { Text(text = "Gelar Depan") },
@@ -85,9 +86,7 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(capitalization =
-            KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
-            placeholder = { Text(text = "XXXXX") }
+            placeholder = { Text(text = "Ir.") }
         )
 
 
@@ -100,9 +99,7 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(capitalization =
-            KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
-            placeholder = { Text(text = "XXXXX") }
+            placeholder = { Text(text = "M.Pd") }
         )
 
         OutlinedTextField(
@@ -115,6 +112,7 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
                     textFiledSize = coordinates.size.toSize()
                 },
             label = { Text(text = "Pendidikan") },
+            readOnly = true,
             trailingIcon = {
                 Icon(icon, "", Modifier.clickable { expanded = !expanded })
             }
