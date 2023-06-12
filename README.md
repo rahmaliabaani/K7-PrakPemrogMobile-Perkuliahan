@@ -3,6 +3,10 @@
 jika ada error
 ![Screenshot 2023-06-12 192843](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/a6975db0-7688-49a8-a841-8c5ef59f21ba)
  SDK location not found. lakukan perubahan pada local.properties
+ ![Screenshot 2023-06-12 192956](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/43466630-bf0b-4b69-8ef5-84a1aa71d94d)
+pada bagian ini
+![Screenshot 2023-06-12 193016](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/ab7c60e8-62ed-4567-a6de-6e060262cf60)
+
 
 HOME
 ![Screenshot_2023-06-12-19-13-58-522_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/0f692dc6-3097-4c13-9ecf-917a70e2aaf9)
