@@ -1,5 +1,6 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -23,8 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Purple700
-import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Teal200
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -53,53 +53,67 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
         .padding(10.dp)
         .fillMaxWidth()) {
         OutlinedTextField(
-            label = { Text(text = "NIDN") },
+            label = { Text(text = "NIDN", color = Color.White) },
             value = nidn.value,
-            onValueChange = {
-                nidn.value = it
-                if (it.text.length <= 12) nidn.value = it
-            },
+            onValueChange = { nidn.value = it },
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(keyboardType =
-            KeyboardType.Decimal),
-            placeholder = { Text(text = "000107560345") }
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+            placeholder = { Text(text = "2", color = Color.White) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            )
         )
         OutlinedTextField(
-            label = { Text(text = "Nama") },
+            label = { Text(text = "Nama", color = Color.White) },
             value = nama.value,
-            onValueChange = {
-                nama.value = it
-            },
+            onValueChange = { nama.value = it },
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "Santoso") }
+            placeholder = { Text(text = "IF231", color = Color.White) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            )
         )
         OutlinedTextField(
-            label = { Text(text = "Gelar Depan") },
+            label = { Text(text = "Gelar Depan", color = Color.White) },
             value = gelar_depan.value,
-            onValueChange = {
-                gelar_depan.value = it
-            },
+            onValueChange = { gelar_depan.value = it },
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "Ir.") }
+            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
+            placeholder = { Text(text = "XXXXX", color = Color.White) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            )
         )
-
-
         OutlinedTextField(
-            label = { Text(text = "Gelar Belakag") },
+            label = { Text(text = "Gelar Belakang", color = Color.White) },
             value = gelar_belakang.value,
-            onValueChange = {
-                gelar_belakang.value = it
-            },
+            onValueChange = { gelar_belakang.value = it },
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "M.Pd") }
+            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
+            placeholder = { Text(text = "XXXXX", color = Color.White) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            )
         )
 
         OutlinedTextField(
@@ -111,28 +125,35 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
                 .onGloballyPositioned { coordinates ->
                     textFiledSize = coordinates.size.toSize()
                 },
-            label = { Text(text = "Pendidikan") },
-            readOnly = true,
+            label = { Text(text = "Pendidikan", color = Color.White) },
             trailingIcon = {
                 Icon(icon, "", Modifier.clickable { expanded = !expanded })
-            }
+            },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            )
         )
 
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier.width(with(LocalDensity.current){textFiledSize.width.toDp()})
+            modifier = Modifier.width(with(LocalDensity.current) { textFiledSize.width.toDp() }),
         ) {
             list.forEach { label ->
                 DropdownMenuItem(
                     onClick = {
                         pendidikan = label
                         expanded = false
-                    }) {
-                    Text(text = label)
+                    }
+                ) {
+                    Text(text = label, color = Color.White)
                 }
             }
         }
+
 
 //        OutlinedTextField(
 //            label = { Text(text = "Pendidikan") },
@@ -149,12 +170,12 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
 //        )
 
         val loginButtonColors = ButtonDefaults.buttonColors(
-            backgroundColor = Purple700,
-            contentColor = Teal200
+            backgroundColor = LightGreen2,
+            contentColor = DeepBlue
         )
         val resetButtonColors = ButtonDefaults.buttonColors(
-            backgroundColor = Teal200,
-            contentColor = Purple700
+            backgroundColor = LightRed,
+            contentColor = DeepBlue
         )
         Row (modifier = Modifier
             .padding(4.dp)

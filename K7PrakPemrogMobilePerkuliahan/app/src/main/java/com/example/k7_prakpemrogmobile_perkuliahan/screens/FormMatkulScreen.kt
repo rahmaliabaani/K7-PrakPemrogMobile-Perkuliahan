@@ -15,8 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Purple700
-import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Teal200
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -34,7 +33,7 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
         .padding(10.dp)
         .fillMaxWidth()) {
         OutlinedTextField(
-            label = { Text(text = "Kode") },
+            label = { Text(text = "Kode", color = TextWhite) },
             value = kode.value,
             onValueChange = {
                 if (it.text.length <= 12) kode.value = it
@@ -44,10 +43,16 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
                 .fillMaxWidth(),
             keyboardOptions = KeyboardOptions(capitalization =
             KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
-            placeholder = { Text(text = "IF231") }
+            placeholder = { Text(text = "IF231", color = TextWhite) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            ),
         )
         OutlinedTextField(
-            label = { Text(text = "Nama") },
+            label = { Text(text = "Nama", color = TextWhite) },
             value = nama.value,
             onValueChange = {
                 nama.value = it
@@ -55,10 +60,16 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "Pemrograman Mobile") }
+            placeholder = { Text(text = "Pemrograman Mobile", color = TextWhite) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            ),
         )
         OutlinedTextField(
-            label = { Text(text = "Jumlah SKS") },
+            label = { Text(text = "Jumlah SKS", color = TextWhite) },
             value = sks.value,
             onValueChange = {
                 if (it.text.length < 2) sks.value = it
@@ -68,7 +79,13 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
                 .fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType =
             KeyboardType.Decimal),
-            placeholder = { Text(text = "2") }
+            placeholder = { Text(text = "2", color = TextWhite) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            ),
         )
 
 //        OutlinedTextField(
@@ -84,17 +101,17 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
 //        )
 
         Spacer(modifier = Modifier.size(16.dp).padding(start = 4.dp))
-        Text(text = "Praktikum", fontSize = 18.sp)
+        Text(text = "Praktikum", color = TextWhite, fontSize = 18.sp)
         Row (modifier = Modifier
             .padding(4.dp)
             .fillMaxWidth()) {
             RadioButton(
                 selected = praktikum.value == "1",
                 onClick = { praktikum.value = "1" },
-                colors = RadioButtonDefaults.colors(Purple700),
+                colors = RadioButtonDefaults.colors(OrangeYellow1, unselectedColor = Color.White),
             )
             Text(
-                text = "Ya",
+                text = "Ya", color = TextWhite,
 
                 modifier = Modifier.padding(14.dp)
 
@@ -102,16 +119,16 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
             RadioButton(
                 selected = praktikum.value == "0",
                 onClick = { praktikum.value = "0" },
-                colors = RadioButtonDefaults.colors(Purple700)
+                colors = RadioButtonDefaults.colors(LightRed, unselectedColor = Color.White)
             )
             Text(
-                text = "Tidak",
+                text = "Tidak", color = TextWhite,
                 modifier = Modifier.padding(14.dp)
             )
         }
 
         OutlinedTextField(
-            label = { Text(text = "Deskrpsi") },
+            label = { Text(text = "Deskrpsi", color = TextWhite) },
             value = deskripsi.value,
             onValueChange = {
                 deskripsi.value = it
@@ -119,16 +136,22 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "IF231") }
+            placeholder = { Text(text = "IF231", color = TextWhite) },
+            textStyle = TextStyle(color = Color.White),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, // Warna garis saat fokus
+                unfocusedBorderColor = Color.White, // Warna garis saat tidak fokus
+                cursorColor = Color.White // Warna kursor
+            ),
         )
 
         val loginButtonColors = ButtonDefaults.buttonColors(
-            backgroundColor = Purple700,
-            contentColor = Teal200
+            backgroundColor = LightGreen3,
+            contentColor = DeepBlue
         )
         val resetButtonColors = ButtonDefaults.buttonColors(
-            backgroundColor = Teal200,
-            contentColor = Purple700
+            backgroundColor = LightRed,
+            contentColor = DeepBlue
         )
         Row (modifier = Modifier
             .padding(4.dp)

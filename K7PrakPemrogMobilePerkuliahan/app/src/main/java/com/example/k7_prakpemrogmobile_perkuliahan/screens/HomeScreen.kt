@@ -18,6 +18,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.k7_prakpemrogmobile_perkuliahan.R
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.DeepBlue
 import dagger.hilt.android.AndroidEntryPoint
 
 @Composable
@@ -32,7 +33,7 @@ fun HomeScreen(
         shape = RoundedCornerShape(15.dp),
         elevation = 5.dp
     ) {
-        Box(modifier = Modifier.height(200.dp)) {
+        Box(modifier = Modifier.background(DeepBlue).height(200.dp)) {
             Image(
                 painter = painter,
                 contentDescription = contentDescription,

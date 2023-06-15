@@ -32,6 +32,7 @@ import com.vanpra.composematerialdialogs.message
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import com.vanpra.composematerialdialogs.title
 import com.example.k7_prakpemrogmobile_perkuliahan.model.Matkul
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.TextWhite
 
 @Composable
 fun MatkulItem(item: Matkul, navController:
@@ -44,23 +45,23 @@ NavHostController, onDelete: (String) -> Unit) {
             .padding(start = 15.dp, top= 15.dp, end = 15.dp)
             .fillMaxWidth()) {
             Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Kode", fontSize = 14.sp)
+                Text(text = "Kode", color = TextWhite, fontSize = 14.sp)
                 Text(item.kode, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = "SKS", fontSize = 14.sp)
+                Text(text = "SKS", color = TextWhite, fontSize = 14.sp)
                 Text(text = "${item.sks}", textAlign = TextAlign.Center, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
 
             Column(modifier = Modifier.weight(5f)) {
-                Text(text = "Nama", fontSize = 14.sp)
+                Text(text = "Nama", color = TextWhite, fontSize = 14.sp)
                 Text(text = item.nama, fontSize = 16.sp,
                     fontWeight = FontWeight.Bold)
             }
 
             Column(modifier = Modifier.weight(2f)) {
-                Text(text = "Praktikum", fontSize = 14.sp)
+                Text(text = "Praktikum", color = TextWhite, fontSize = 14.sp)
                 Text(text = if(item.praktikum.equals(1)){"Ya"}else{"Tidak"}, fontSize = 16.sp, fontWeight = FontWeight.Bold,textAlign = TextAlign.Center)
             }
             Icon(
