@@ -1,17 +1,8 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.Divider
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
@@ -37,43 +28,57 @@ fun MahasiswaItem(item: Mahasiswa, navController: NavHostController, onDelete: (
     var expanded by remember { mutableStateOf(false) }
     val subMenus = listOf("Edit", "Delete")
     val confirmationDialogState = rememberMaterialDialogState()
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable {
+                navController.navigate("edit-mahasiswa/" + item.id)
+            }
+            .clickable { expanded = true }
+    ) {
         Row(modifier = Modifier
-            .padding(15.dp)
-            .fillMaxWidth()) {
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "NPM", fontSize = 14.sp)
-                Text(item.npm, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            .padding(15.dp)) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "NPM", fontWeight = FontWeight.Bold)
+                Text(text = "Nama", fontWeight = FontWeight.Bold)
+                Text(text = "Tanggal Lahir", fontWeight = FontWeight.Bold)
+                Text(text = "Jenis Kelamin", fontWeight = FontWeight.Bold)
+
             }
 
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Nama", fontSize = 14.sp)
+            Column(modifier = Modifier.weight(1f)) {
+                Text(item.npm, fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 Text(text = item.nama, fontSize = 16.sp,
                     fontWeight = FontWeight.Bold)
-            }
-
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Tanggal Lahir", fontSize = 14.sp)
                 Text(item.tanggal_lahir, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            }
-
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Jenis Kelamin", fontSize = 14.sp)
                 Text(item.jenis_kelamin, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
-            Icon(
-                Icons.Default.MoreVert,
+
+            Column(
                 modifier = Modifier
-                    .height(40.dp)
-                    .width(40.dp)
-                    .padding(0.dp)
-                    .weight(1f, true)
-                    .clickable {
-                        expanded = true
-                    },
-                contentDescription = null,
-                tint = Color.Unspecified
-            )
+                    .wrapContentWidth()
+                    .wrapContentHeight()
+            ) {
+                Box(
+                    modifier = Modifier
+                        .width(40.dp)
+                        .height(40.dp)
+                        .clickable {
+                            expanded = true
+                        }
+                ) {
+                    Icon(
+                        Icons.Default.MoreVert,
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clickable { expanded = true },
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                }
+            }
+
         }
         DropdownMenu(
             expanded = expanded,
