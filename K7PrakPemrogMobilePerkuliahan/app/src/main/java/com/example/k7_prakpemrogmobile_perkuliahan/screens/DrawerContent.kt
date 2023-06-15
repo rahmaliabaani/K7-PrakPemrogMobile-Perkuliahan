@@ -15,6 +15,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.LightGreen3
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.TextWhite
 
 @Composable
 fun DrawerContent (onClick: (String) -> Unit){
@@ -27,13 +29,13 @@ fun DrawerContent (onClick: (String) -> Unit){
 
     val listState = rememberLazyListState()
     Column (
-        modifier = Modifier.background(MaterialTheme.colors.background)
+        modifier = Modifier.background(LightGreen3)
     ) {
         Row (modifier = Modifier
-            .fillMaxWidth()
+            .background(LightGreen3).fillMaxWidth()
             .padding(5.dp),
             horizontalArrangement = Arrangement.Center) {
-            Text("Selamat Datang", modifier =
+            Text("Perkuliahan", modifier =
             Modifier
                 .height(32.dp)
                 .padding(2.dp),
@@ -41,7 +43,7 @@ fun DrawerContent (onClick: (String) -> Unit){
                 fontWeight = FontWeight.SemiBold)
         }
 
-        Divider(startIndent = 8.dp, thickness = 1.dp, color = Color.Black)
+        Divider(startIndent = 8.dp, thickness = 1.dp, color = LightGreen3)
 
         LazyColumn(
             state = listState,
@@ -62,14 +64,6 @@ fun DrawerContent (onClick: (String) -> Unit){
                                 onClick(menu.route)
                             }
                     ) {
-                        Icon(
-                            menu.icon,
-                            modifier = Modifier
-                                .height(32.dp)
-                                .width(32.dp),
-                            contentDescription = null,
-                            tint = Color.Unspecified
-                        )
                         Text(
                             stringResource(id = menu.title),
                             modifier = Modifier.height(32.dp).padding(2.dp),

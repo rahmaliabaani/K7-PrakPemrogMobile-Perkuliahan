@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,10 +34,11 @@ fun MatkulScreen(navController : NavHostController, modifier: Modifier = Modifie
     val items: List<Matkul> by viewModel.list.observeAsState(initial = listOf())
 
     Column(modifier = modifier.fillMaxWidth()) {
-        Button(onClick = {
+        Button(modifier = Modifier.padding(15.dp).fillMaxWidth(), onClick = {
             navController.navigate("tambah-matkul")
-        }, Modifier.padding(start = 15.dp, top = 10.dp)) {
-            Text(text = "Tambah")
+        }) {
+            Icon(Icons.Filled.Add, contentDescription = "add icon")
+            Text(text = "Tambah Data", modifier = Modifier.padding(4.dp))
         }
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {

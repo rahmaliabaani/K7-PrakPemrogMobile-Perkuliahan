@@ -1,10 +1,8 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
-import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -21,10 +19,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.k7_prakpemrogmobile_perkuliahan.R
-import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.Purple700
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.*
 
 @Composable
 fun MainScreen() {
@@ -37,13 +38,16 @@ fun MainScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = Purple700,
+                backgroundColor = DeepBlue,
                 elevation = 0.dp,
                 modifier = Modifier.fillMaxWidth()
             )
             {
                 //TopAppBar Content
-                Box(Modifier.height(32.dp)) {
+                Box(
+                    Modifier
+                        .background(DeepBlue)
+                        .height(32.dp)) {
                     Row(
                         Modifier
                             .fillMaxHeight()
@@ -100,9 +104,7 @@ fun MainScreen() {
         },
         scaffoldState = scaffoldState,
         snackbarHost = {
-// reuse default SnackbarHost to have default  animation and timing handling
             SnackbarHost(it) { data ->
-// custom snackbar with the custom colors
                 Snackbar(
                     actionColor = Color.Green,
                     contentColor = Color.White,
@@ -124,14 +126,17 @@ fun MainScreen() {
             })
         },
     )
+
     { innerPadding ->
         Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier
+                .background(BlueViolet3)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.Start
         ) {
             NavHost(navController = navController, startDestination = "home") {
                 composable("home") {
-                    title.value = "Home"
+                    title.value = "Perkuliahan Kelompok 7"
 
                     Column(
                         modifier = Modifier
@@ -139,6 +144,21 @@ fun MainScreen() {
                             .fillMaxWidth()
                             .verticalScroll(state = scrollState)
                     ) {
+                        Text(
+                            text = "Perkulaiahan",
+                            style = MaterialTheme.typography.h5,
+                            color = TextWhite,
+                            modifier = Modifier.padding(10.dp)
+                        )
+                        Fitur(chips = listOf("Dosen", "Mahasiswa", "Matakuliah"))
+                        harian()
+                        Text(
+                            text = "Anggota : ",
+                            style = MaterialTheme.typography.h5,
+                            color = TextWhite,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.padding(10.dp)
+                        )
 
                         Row(
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -205,6 +225,7 @@ fun MainScreen() {
                         }
                         Column(
                             modifier = Modifier
+                                .background(DeepBlue)
                                 .padding(30.dp)
                                 .fillMaxWidth()
                         ) {
@@ -213,99 +234,128 @@ fun MainScreen() {
                     }
                 }
 //route dosen
-                        composable("dosen") {
-                            title.value = "Dosen"
-                            DosenScreen(
-                                navController = navController,
-                                snackbarHostState = scaffoldState.snackbarHostState, modifier =
-                                Modifier.padding(innerPadding)
-                            )
+                composable("dosen") {
+                    title.value = "Dosen"
+                    DosenScreen(
+                        navController = navController,
+                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                        Modifier.padding(innerPadding)
+                    )
+                }
+                composable("tambah-dosen") {
+                    title.value = "Tambah Dosen"
+                    FormDosenScreen(
+                        navController =
+                        navController, modifier = Modifier.padding(innerPadding)
+                    )
+                }
+                composable("edit-dosen/{id}",
+                    listOf(
+                        navArgument("id") {
+                            type = NavType.StringType
                         }
-                        composable("tambah-dosen") {
-                            title.value = "Tambah Dosen"
-                            FormDosenScreen(
-                                navController =
-                                navController, modifier = Modifier.padding(innerPadding)
-                            )
-                        }
-                        composable("edit-dosen/{id}",
-                            listOf(
-                                navArgument("id") {
-                                    type = NavType.StringType
-                                }
-                            )) { backStackEntry ->
-                            title.value = "Edit Dosen"
-                            val id =
-                                backStackEntry.arguments?.getString("id")
-                                    ?: return@composable
-                            FormDosenScreen(
-                                navController = navController, id = id, modifier =
-                                Modifier.padding(innerPadding)
-                            )
-                        }
+                    )) { backStackEntry ->
+                    title.value = "Edit Dosen"
+                    val id =
+                        backStackEntry.arguments?.getString("id")
+                            ?: return@composable
+                    FormDosenScreen(
+                        navController = navController, id = id, modifier =
+                        Modifier.padding(innerPadding)
+                    )
+                }
 //route mahasiswa
-                        composable("mahasiswa") {
-                            title.value = "Mahasiswa"
-                            MahasiswaScreen(
-                                navController = navController,
-                                snackbarHostState = scaffoldState.snackbarHostState, modifier =
-                                Modifier.padding(innerPadding)
-                            )
+                composable("mahasiswa") {
+                    title.value = "Mahasiswa"
+                    MahasiswaScreen(
+                        navController = navController,
+                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                        Modifier.padding(innerPadding)
+                    )
+                }
+                composable("tambah-mahasiswa") {
+                    title.value = "Tambah Mahasiswa"
+                    FormMahasiswaScreen(
+                        navController =
+                        navController, modifier = Modifier.padding(innerPadding)
+                    )
+                }
+                composable("edit-mahasiswa/{id}",
+                    listOf(
+                        navArgument("id") {
+                            type = NavType.StringType
                         }
-                        composable("tambah-mahasiswa") {
-                            title.value = "Tambah Mahasiswa"
-                            FormMahasiswaScreen(
-                                navController =
-                                navController, modifier = Modifier.padding(innerPadding)
-                            )
-                        }
-                        composable("edit-mahasiswa/{id}",
-                            listOf(
-                                navArgument("id") {
-                                    type = NavType.StringType
-                                }
-                            )) { backStackEntry ->
-                            title.value = "Edit Mahasiswa"
-                            val id =
-                                backStackEntry.arguments?.getString("id")
-                                    ?: return@composable
-                            FormMahasiswaScreen(
-                                navController = navController, id = id, modifier =
-                                Modifier.padding(innerPadding)
-                            )
-                        }
+                    )) { backStackEntry ->
+                    title.value = "Edit Mahasiswa"
+                    val id =
+                        backStackEntry.arguments?.getString("id")
+                            ?: return@composable
+                    FormMahasiswaScreen(
+                        navController = navController, id = id, modifier =
+                        Modifier.padding(innerPadding)
+                    )
+                }
 //                route matkul
-                        composable("matkul") {
-                            title.value = "Matakuliah"
-                            MatkulScreen(
-                                navController = navController,
-                                snackbarHostState = scaffoldState.snackbarHostState, modifier =
-                                Modifier.padding(innerPadding)
-                            )
+                composable("matkul") {
+                    title.value = "Matakuliah"
+                    MatkulScreen(
+                        navController = navController,
+                        snackbarHostState = scaffoldState.snackbarHostState, modifier =
+                        Modifier.padding(innerPadding)
+                    )
+                }
+                composable("tambah-matkul") {
+                    title.value = "Tambah Matakuliah"
+                    FormMatkulScreen(
+                        navController =
+                        navController, modifier = Modifier.padding(innerPadding)
+                    )
+                }
+                composable("edit-matkul/{id}",
+                    listOf(
+                        navArgument("id") {
+                            type = NavType.StringType
                         }
-                        composable("tambah-matkul") {
-                            title.value = "Tambah Matakuliah"
-                            FormMatkulScreen(
-                                navController =
-                                navController, modifier = Modifier.padding(innerPadding)
-                            )
-                        }
-                        composable("edit-matkul/{id}",
-                            listOf(
-                                navArgument("id") {
-                                    type = NavType.StringType
-                                }
-                            )) { backStackEntry ->
-                            title.value = "Edit Matakuliah"
-                            val id =
-                                backStackEntry.arguments?.getString("id")
-                                    ?: return@composable
-                            FormMatkulScreen(
-                                navController = navController, id = id, modifier =
-                                Modifier.padding(innerPadding)
-                            )
-                        }
-                    }
+                    )) { backStackEntry ->
+                    title.value = "Edit Matakuliah"
+                    val id =
+                        backStackEntry.arguments?.getString("id")
+                            ?: return@composable
+                    FormMatkulScreen(
+                        navController = navController, id = id, modifier =
+                        Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
+    }
+}
+
+@Composable
+fun harian(
+    color: Color = LightRed,
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .padding(15.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(color)
+            .padding(horizontal = 15.dp, vertical = 20.dp)
+            .fillMaxWidth()
+    ) {
+        Column {
+            Text(
+                text = "Jadwal hari ini",
+                style = MaterialTheme.typography.h6,
+                color = TextWhite
+            )
+            Text(
+                text = "Praktikum Pemograman Mobile",
+                style = MaterialTheme.typography.body1,
+                color = TextWhite
+            )
+        }
+    }
+}
