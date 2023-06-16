@@ -9,36 +9,40 @@ pada bagian ini
 
 
 HOME
-![Screenshot_2023-06-12-19-13-58-522_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/0f692dc6-3097-4c13-9ecf-917a70e2aaf9)
+![Screenshot_2023-06-16-20-45-44-615_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/20dba3bf-000a-4464-86fd-5c15e9833cc8)
+
+![Screenshot_2023-06-16-20-45-47-019_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/34c22ca8-aca4-4f83-9f8c-bbb04728dec3)
+
 
 MENU
-![Screenshot_2023-06-12-19-14-00-690_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/ce78f6fa-262e-4709-b67d-6f6dae37cef0)
+![Screenshot_2023-06-16-20-45-51-418_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/22f907f8-22e3-458d-ba00-e642d717502c)
 
 
 MENU DOSEN
-![Screenshot_2023-06-12-19-13-46-519_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/fa91fe6e-2a28-4e6b-9414-4661a1432a73)
+![Screenshot_2023-06-16-20-46-14-911_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/9b895320-0ee1-485a-8b30-4f60ea756762)
 
 
 FORM INPUT & EDIT DOSEN
-![Screenshot_2023-06-12-19-13-48-482_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/76e38fe0-d1c1-43b2-842d-8b37fdd243a2)
+![Screenshot_2023-06-16-20-45-56-355_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/9a0012f8-7220-417d-928c-abdfc4e847ed)
 
-![Screenshot_2023-06-12-19-13-55-313_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/b08855fc-384e-4bf4-8f02-7f8d811f1d9b)
+![Screenshot_2023-06-16-20-46-17-500_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/a77d10e0-d9d7-47cb-ba6b-0c50ca564f30)
 
 
 MENU MAHASISWA
-![Screenshot_2023-06-12-19-13-25-391_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/cf6aee10-79f1-4a99-94bd-ff3c27ca742c)
+![Screenshot_2023-06-16-20-46-21-412_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/c891bdd7-0294-4e39-abee-abf05f7094b3)
 
 FORM INPUT & EDIT MAHASISWA
-![Screenshot_2023-06-12-19-13-27-797_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/bb3d3262-2f33-47d8-8a3d-94ae4bd1f97e)
+![Screenshot_2023-06-16-20-46-31-216_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/49575a49-f4fd-40d9-843c-ac71aaa94259)
 
-![Screenshot_2023-06-12-19-13-32-161_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/e58d8f9a-ff90-4f3e-a630-e41d1395b41f)
+![Screenshot_2023-06-16-20-46-49-896_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/8bd23d7f-99ca-4b05-95c9-384dae098f28)
+
 
 MENU MATAKULIAH
-![Screenshot_2023-06-12-19-13-04-597_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/fe9485cb-b113-4bb2-9db5-7f15791774cc)
+![Screenshot_2023-06-16-20-46-54-310_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/0e4b71bb-c4a7-469e-8d5d-f6910f1cc663)
 
 FORM INPUT & EDIT MATAKULIAH
-![Screenshot_2023-06-12-19-13-13-628_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/21d98f4c-8ec2-4561-9078-414e615544b2)
+![Screenshot_2023-06-16-20-46-55-773_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/2399d735-1758-41d8-a92d-736016881dc0)
 
-![Screenshot_2023-06-12-19-13-19-167_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/f4e350dd-551b-4a09-bb21-6bed66a05d8e)
+![Screenshot_2023-06-16-20-47-02-702_com example k7_prakpemrogmobile_perkuliahan](https://github.com/rahmaliabaani/K7-PrakPemrogMobile-Perkuliahan/assets/46589904/805ef392-c535-449f-8bfe-f2fa1bfb8971)
 
 
