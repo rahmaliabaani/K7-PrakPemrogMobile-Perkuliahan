@@ -43,7 +43,7 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
                 .fillMaxWidth(),
             keyboardOptions = KeyboardOptions(capitalization =
             KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
-            placeholder = { Text(text = "IF231", color = TextWhite) },
+            placeholder = { Text(text = "Contoh 'IF231'", color = TextWhite) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -60,7 +60,7 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "Pemrograman Mobile", color = TextWhite) },
+            placeholder = { Text(text = "Contoh 'Pemrograman Mobile'", color = TextWhite) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -79,7 +79,7 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
                 .fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType =
             KeyboardType.Decimal),
-            placeholder = { Text(text = "2", color = TextWhite) },
+            placeholder = { Text(text = "Contoh '2'", color = TextWhite) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -136,7 +136,7 @@ fun FormMatkulScreen(navController : NavHostController, id: String? = null, modi
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "IF231", color = TextWhite) },
+            placeholder = { Text(text = "Contoh 'Belajar membuat aplikasi mobile dengan android studio'", color = TextWhite) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus

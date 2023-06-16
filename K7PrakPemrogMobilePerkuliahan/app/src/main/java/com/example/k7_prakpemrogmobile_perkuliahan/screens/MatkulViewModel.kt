@@ -48,6 +48,7 @@ class MatkulViewModel @Inject constructor(private val matkulRepository: MatkulRe
                 _toast.postValue(message)
                 _isLoading.postValue(false)
             }, onSuccess = {
+                _toast.postValue("Berhasil Menambahkan Matakuliah Baru")
                 _isLoading.postValue(false)
                 _success.postValue(true)
             }
@@ -74,6 +75,7 @@ class MatkulViewModel @Inject constructor(private val matkulRepository: MatkulRe
                 _toast.postValue(message)
                 _isLoading.postValue(false)
             }, onSuccess = {
+                _toast.postValue("Berhasil Mengubah Data Matakuliah")
                 _isLoading.postValue(false)
                 _success.postValue(true)
             }
@@ -87,7 +89,7 @@ class MatkulViewModel @Inject constructor(private val matkulRepository: MatkulRe
             _isLoading.postValue(false)
             _success.postValue(true)
         }, onSuccess = {
-            _toast.postValue("Data berhasil dihapus")
+            _toast.postValue("Berhasil Menghapus Salah satu Matakuliah")
             _isLoading.postValue(false)
             _success.postValue(true)
         })

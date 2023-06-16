@@ -40,21 +40,21 @@ fun DosenItem(item: Dosen, navController: NavHostController, onDelete: (String) 
             .clickable { expanded = true }
     ) {
         Row(modifier = Modifier.padding(15.dp)) {
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(3f)) {
                 Text(text = "NIDN", fontWeight = FontWeight.Bold)
                 Text(text = "Nama", fontWeight = FontWeight.Bold)
                 Text(text = "Pendidikan", fontWeight = FontWeight.Bold)
 
             }
 
-            Column(modifier = Modifier.weight(1f)) {
-                Text(item.nidn, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Column(modifier = Modifier.weight(5f)) {
+                Text(item.nidn, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 Text(
                     "${item.gelar_depan} ${item.nama} ${item.gelar_belakang}",
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.SemiBold
                 )
-                Text(text = item.pendidikan, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text(text = item.pendidikan, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
             }
 
             Column(
