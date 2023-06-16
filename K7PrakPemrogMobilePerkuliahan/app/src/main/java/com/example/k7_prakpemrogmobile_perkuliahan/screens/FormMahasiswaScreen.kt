@@ -46,7 +46,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
             label = { Text(text = "NPM", color = TextWhite) },
             value = npm.value,
             onValueChange = {
-                npm.value = it
+                if (it.text.length <= 12) npm.value = it
             },
             modifier = Modifier
                 .padding(4.dp)
@@ -55,7 +55,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 keyboardType =
                 KeyboardType.Decimal
             ),
-            placeholder = { Text(text = "NPM", color = TextWhite) },
+            placeholder = { Text(text = "Contoh '202020020'" , color = TextWhite) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -77,7 +77,7 @@ fun FormMahasiswaScreen(navController : NavHostController, id: String? = null, m
                 capitalization =
                 KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text
             ),
-            placeholder = { Text(text = "XXXXX", color = TextWhite) },
+            placeholder = { Text(text = "Contoh 'Rembulan'", color = TextWhite) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus

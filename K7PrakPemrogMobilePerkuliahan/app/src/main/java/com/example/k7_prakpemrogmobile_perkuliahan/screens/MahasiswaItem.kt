@@ -39,7 +39,7 @@ fun MahasiswaItem(item: Mahasiswa, navController: NavHostController, onDelete: (
     ) {
         Row(modifier = Modifier
             .padding(15.dp)) {
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(3f)) {
                 Text(text = "NPM", fontWeight = FontWeight.Bold)
                 Text(text = "Nama", fontWeight = FontWeight.Bold)
                 Text(text = "Tanggal Lahir", fontWeight = FontWeight.Bold)
@@ -47,12 +47,12 @@ fun MahasiswaItem(item: Mahasiswa, navController: NavHostController, onDelete: (
 
             }
 
-            Column(modifier = Modifier.weight(1f)) {
-                Text(item.npm, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Column(modifier = Modifier.weight(5f)) {
+                Text(item.npm, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 Text(text = item.nama, fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold)
-                Text(item.tanggal_lahir, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                Text(item.jenis_kelamin, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                    fontWeight = FontWeight.SemiBold)
+                Text(item.tanggal_lahir, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Text(item.jenis_kelamin, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
             }
 
             Column(

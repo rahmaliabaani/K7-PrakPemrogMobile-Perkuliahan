@@ -48,6 +48,7 @@ class DosenViewModel @Inject constructor(private val dosenRepository: DosenRepos
                 _toast.postValue(message)
                 _isLoading.postValue(false)
             }, onSuccess = {
+                _toast.postValue("Berhasil Menambahkan Dosen Baru")
                 _isLoading.postValue(false)
                 _success.postValue(true)
             }
@@ -74,6 +75,7 @@ class DosenViewModel @Inject constructor(private val dosenRepository: DosenRepos
                 _toast.postValue(message)
                 _isLoading.postValue(false)
             }, onSuccess = {
+                _toast.postValue("Berhasil Mengubah Data Dosen")
                 _isLoading.postValue(false)
                 _success.postValue(true)
             }
@@ -87,7 +89,7 @@ class DosenViewModel @Inject constructor(private val dosenRepository: DosenRepos
             _isLoading.postValue(false)
             _success.postValue(true)
         }, onSuccess = {
-            _toast.postValue("Data berhasil dihapus")
+            _toast.postValue("Berhasil Menghapus Salah satu Dosen")
             _isLoading.postValue(false)
             _success.postValue(true)
         })

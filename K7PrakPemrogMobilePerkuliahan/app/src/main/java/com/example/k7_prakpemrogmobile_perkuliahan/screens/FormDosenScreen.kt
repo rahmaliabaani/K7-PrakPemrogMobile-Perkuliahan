@@ -55,12 +55,14 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
         OutlinedTextField(
             label = { Text(text = "NIDN", color = Color.White) },
             value = nidn.value,
-            onValueChange = { nidn.value = it },
+            onValueChange = {
+                if (it.text.length <= 12) nidn.value = it
+            },
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            placeholder = { Text(text = "2", color = Color.White) },
+            placeholder = { Text(text = "Contoh '00123041'", color = Color.White) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -75,7 +77,8 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            placeholder = { Text(text = "IF231", color = Color.White) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            placeholder = { Text(text = "Contoh 'Waditra Irma'", color = Color.White) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -90,8 +93,8 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
-            placeholder = { Text(text = "XXXXX", color = Color.White) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            placeholder = { Text(text = "Contoh 'Drs.'", color = Color.White) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -106,8 +109,8 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters, keyboardType = KeyboardType.Text),
-            placeholder = { Text(text = "XXXXX", color = Color.White) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            placeholder = { Text(text = "Contoh 'M.Pd'", color = Color.White) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus
@@ -122,13 +125,20 @@ fun FormDosenScreen(navController : NavHostController, id: String? = null, modif
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(4.dp)
+                .clickable {
+                    expanded = !expanded
+                }
                 .onGloballyPositioned { coordinates ->
                     textFiledSize = coordinates.size.toSize()
                 },
+            readOnly = true,
             label = { Text(text = "Pendidikan", color = Color.White) },
             trailingIcon = {
-                Icon(icon, "", Modifier.clickable { expanded = !expanded })
+                Icon(icon, "",Modifier.clickable {
+                    expanded = !expanded
+                })
             },
+            placeholder = { Text(text = "S2 / S3", color = Color.White) },
             textStyle = TextStyle(color = Color.White),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White, // Warna garis saat fokus

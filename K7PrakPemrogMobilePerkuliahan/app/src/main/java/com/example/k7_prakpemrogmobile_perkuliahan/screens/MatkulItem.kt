@@ -1,17 +1,8 @@
 package com.example.k7_prakpemrogmobile_perkuliahan.screens
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.Divider
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
@@ -22,7 +13,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,85 +22,89 @@ import com.vanpra.composematerialdialogs.message
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import com.vanpra.composematerialdialogs.title
 import com.example.k7_prakpemrogmobile_perkuliahan.model.Matkul
-import com.example.k7_prakpemrogmobile_perkuliahan.ui.theme.TextWhite
 
 @Composable
-fun MatkulItem(item: Matkul, navController:
-NavHostController, onDelete: (String) -> Unit) {
+fun MatkulItem(item: Matkul, navController: NavHostController, onDelete: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     val subMenus = listOf("Edit", "Delete")
     val confirmationDialogState = rememberMaterialDialogState()
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Row(modifier = Modifier
-            .padding(start = 15.dp, top= 15.dp, end = 15.dp)
-            .fillMaxWidth()) {
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Kode", color = TextWhite, fontSize = 14.sp)
-                Text(item.kode, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable {
+                navController.navigate("edit-matkul/" + item.id)
             }
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(text = "SKS", color = TextWhite, fontSize = 14.sp)
-                Text(text = "${item.sks}", textAlign = TextAlign.Center, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            .clickable { expanded = true }
+    ) {
+        Row(modifier = Modifier
+            .padding(8.dp)) {
+            Column(modifier = Modifier.weight(3f)) {
+                Text(text = "Kode", fontWeight = FontWeight.Bold)
+                Text(text = "Nama", fontWeight = FontWeight.Bold)
+                Text(text = "Praktikum", fontWeight = FontWeight.Bold)
+                Text(text = "Jumlah SKS", fontWeight = FontWeight.Bold)
+                Text(text = "Deskripsi", fontWeight = FontWeight.Bold)
             }
 
             Column(modifier = Modifier.weight(5f)) {
-                Text(text = "Nama", color = TextWhite, fontSize = 14.sp)
-                Text(text = item.nama, fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold)
+                Text(item.kode, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Text(item.nama, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Text(if(item.praktikum.equals(1)){"Ya"}else{"Tidak"}, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Text(text = "${item.sks}", fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold)
+                Text(item.deskripsi, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
             }
 
-            Column(modifier = Modifier.weight(2f)) {
-                Text(text = "Praktikum", color = TextWhite, fontSize = 14.sp)
-                Text(text = if(item.praktikum.equals(1)){"Ya"}else{"Tidak"}, fontSize = 16.sp, fontWeight = FontWeight.Bold,textAlign = TextAlign.Center)
-            }
-            Icon(
-                Icons.Default.MoreVert,
+            Column(
                 modifier = Modifier
-                    .height(40.dp)
-                    .width(40.dp)
-                    .padding(0.dp)
-                    .weight(1f, true)
-                    .clickable {
-                        expanded = true
-                    },
-                contentDescription = null,
-                tint = Color.Unspecified
-            )
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false },
-                offset = DpOffset(x = (-66).dp, y = (-10).dp)
+                    .wrapContentWidth()
+                    .wrapContentHeight()
             ) {
-                subMenus.forEachIndexed { _, s ->
-                    DropdownMenuItem(onClick = {
-                        expanded = false
-                        when (s) {
-                            "Edit" -> {
-                                navController.navigate("edit-matkul/${item.id}")
-                            }
-                            "Delete" -> {
-                                confirmationDialogState.show()
-                            }
+                Box(
+                    modifier = Modifier
+                        .width(40.dp)
+                        .height(40.dp)
+                        .clickable {
+                            expanded = true
                         }
-                    }) {
-                        Text(text = s)
+                ) {
+                    Icon(
+                        Icons.Default.MoreVert,
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clickable { expanded = true },
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                }
+            }
+
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            offset = DpOffset(x = (-66).dp, y = (-10).dp)
+        ) {
+            subMenus.forEachIndexed { _, s ->
+                DropdownMenuItem(onClick = {
+                    expanded = false
+                    when (s) {
+                        "Edit" -> {
+                            navController.navigate("edit-matkul/${item.id}")
+                        }
+                        "Delete" -> {
+                            confirmationDialogState.show()
+                        }
                     }
+                }) {
+                    Text(text = s)
                 }
             }
         }
-
-        Row(modifier = Modifier
-            .padding(start = 15.dp,top = 5.dp, end = 15.dp, bottom = 15.dp)
-            .fillMaxWidth()) {
-            Column(modifier = Modifier.weight(3f)) {
-                Text(text = "Deskripsi", fontSize = 14.sp)
-                Text(item.deskripsi, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            }
-        }
-
-
     }
+
+
     Divider(modifier = Modifier.fillMaxWidth())
     MaterialDialog(dialogState = confirmationDialogState,
         buttons = {

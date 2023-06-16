@@ -47,6 +47,7 @@ class MahasiswalViewModel @Inject constructor(private val mahasiswaRepository: M
                 _toast.postValue(message)
                 _isLoading.postValue(false)
             }, onSuccess = {
+                _toast.postValue("Berhasil Menambahkan Mahasiswa Baru")
                 _isLoading.postValue(false)
                 _success.postValue(true)
             }
@@ -72,6 +73,7 @@ class MahasiswalViewModel @Inject constructor(private val mahasiswaRepository: M
                 _toast.postValue(message)
                 _isLoading.postValue(false)
             }, onSuccess = {
+                _toast.postValue("Berhasil Mengubah Data Mahasiswa")
                 _isLoading.postValue(false)
                 _success.postValue(true)
             }
@@ -85,7 +87,7 @@ class MahasiswalViewModel @Inject constructor(private val mahasiswaRepository: M
             _isLoading.postValue(false)
             _success.postValue(true)
         }, onSuccess = {
-            _toast.postValue("Data berhasil dihapus")
+            _toast.postValue("Berhasil Menghapus Salah satu Mahasiswa")
             _isLoading.postValue(false)
             _success.postValue(true)
         })
